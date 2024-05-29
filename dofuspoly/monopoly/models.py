@@ -1,5 +1,16 @@
 from django.db import models
 
+class Game(models.Model):
+    board = models.ForeignKey('Board', on_delete=models.CASCADE)
+    players = models.ManyToManyField('Player')
+    current_player = models.ForeignKey('Player', null=True, blank=True)
+    turn = models.IntegerField(default=0)
+    finished = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.created_at
+
 class Board(models.Model):
     cases = models.ManyToManyField('Case')
 

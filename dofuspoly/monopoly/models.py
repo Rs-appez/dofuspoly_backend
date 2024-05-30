@@ -3,7 +3,7 @@ from django.db import models
 class Game(models.Model):
     board = models.ForeignKey('Board', on_delete=models.CASCADE)
     players = models.ManyToManyField('Player')
-    current_player = models.ForeignKey('Player', null=True, blank=True, on_delete=models.PROTECT)
+    current_player = models.ForeignKey('Player', null=True, blank=True, on_delete=models.PROTECT, related_name='current_player')
     turn = models.IntegerField(default=0)
     finished = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -26,11 +26,11 @@ class Color(models.Model):
 class Case(models.Model):
     name = models.CharField(max_length=255)
     price = models.IntegerField()
-    owner = models.ForeignKey('Player', null=True, blank=True)
-    type = models.ForeignKey('CaseType', on_delete=models.CASCADE)
-    color = models.ForeignKey('Color', null=True, blank=True)
+    owner = models.ForeignKey('Player', null=True, blank=True, on_delete=models.DO_NOTHING)
+    type = models.ForeignKey('CaseType', on_delete=models.PROTECT)
+    color = models.ForeignKey('Color', null=True, blank=True, on_delete=models.PROTECT)
     houses = models.IntegerField(default=0)
-    rent = models.ForeignKey('Rent', null=True, blank=True)
+    rent = models.ForeignKey('Rent', null=True, blank=True, on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return self.name

@@ -29,7 +29,6 @@ class Case(models.Model):
     owner = models.ForeignKey('Player', null=True, blank=True, on_delete=models.DO_NOTHING)
     type = models.ForeignKey('CaseType', on_delete=models.PROTECT)
     color = models.ForeignKey('Color', null=True, blank=True, on_delete=models.PROTECT)
-    houses = models.IntegerField(default=0)
     rent = models.ForeignKey('Rent', null=True, blank=True, on_delete=models.DO_NOTHING)
 
     def __str__(self):
@@ -74,8 +73,14 @@ class Player(models.Model):
     position = models.IntegerField()
     in_jail = models.BooleanField(default=False)
     jail_turns = models.IntegerField(default=0)
-    cards = models.ManyToManyField('Card')    
+    cards = models.ManyToManyField('Card')
+    ownedCase = models.ManyToManyField('OwnedCase')
 
     def __str__(self):
         return self.name
 
+class OwnedCase(models.Model):
+    case = models.ForeignKey('Case', on_delete=models.CASCADE)
+    mortgaged = models.BooleanField(default=False)
+    houses = models.IntegerField(default=0)
+    hotel = models.BooleanField(default=False)

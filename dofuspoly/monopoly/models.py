@@ -55,7 +55,9 @@ class Card(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     type = models.ForeignKey('CardType', on_delete=models.CASCADE)
-    value = models.IntegerField()
+
+    image = models.ImageField(upload_to='statics/cards/')
+    image_back = models.ImageField(upload_to='statics/cards/', null=True, blank=True)
 
     def __str__(self):
         return self.name

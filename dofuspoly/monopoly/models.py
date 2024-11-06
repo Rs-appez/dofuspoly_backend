@@ -73,11 +73,11 @@ class Player(models.Model):
     position = models.IntegerField()
     in_jail = models.BooleanField(default=False)
     jail_turns = models.IntegerField(default=0)
-    cards = models.ManyToManyField('Card')
-    ownedCase = models.ManyToManyField('OwnedCase')
+    cards = models.ManyToManyField('Card', blank=True)
+    ownedCase = models.ManyToManyField('OwnedCase', blank=True)
 
     def __str__(self):
-        return self.name
+        return self.user.username
 
 class OwnedCase(models.Model):
     case = models.ForeignKey('Case', on_delete=models.CASCADE)

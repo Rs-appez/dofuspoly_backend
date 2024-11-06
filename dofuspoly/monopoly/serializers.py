@@ -1,5 +1,12 @@
 from rest_framework import serializers
 from .models import Board, Color, Case, Game, Rent, CaseType, Card, CardType, Player
+from django.contrib.auth.models import User
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username']
 
 class ColorSerializer(serializers.ModelSerializer):
     class Meta:
@@ -30,6 +37,7 @@ class CardSerializer(serializers.ModelSerializer):
 
 class PlayerSerializer(serializers.ModelSerializer):
     cards = CardSerializer(many=True)
+    user = UserSerializer()
 
     class Meta:
         model = Player
@@ -59,3 +67,4 @@ class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
         fields = '__all__'
+

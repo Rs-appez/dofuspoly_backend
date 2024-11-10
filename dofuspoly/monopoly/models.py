@@ -75,6 +75,7 @@ class Player(models.Model):
     jail_turns = models.IntegerField(default=0)
     cards = models.ManyToManyField('Card', blank=True)
     ownedCase = models.ManyToManyField('OwnedCase', blank=True)
+    image = models.CharField(max_length=255, default='default.png')
 
     def __str__(self):
         return self.user.username

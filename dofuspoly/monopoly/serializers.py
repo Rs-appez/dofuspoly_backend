@@ -41,7 +41,7 @@ class PlayerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Player
-        fields = ['user', 'money', 'position', 'in_jail', 'jail_turns', 'cards']
+        fields = ['user', 'money', 'position', 'in_jail', 'jail_turns', 'cards', 'image']
 
 class CaseSerializer(serializers.ModelSerializer):
     owner = PlayerSerializer()

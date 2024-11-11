@@ -25,6 +25,7 @@ class Color(models.Model):
 
 class Case(models.Model):
     name = models.CharField(max_length=255)
+    position = models.IntegerField()
     price = models.IntegerField()
     owner = models.ForeignKey('Player', null=True, blank=True, on_delete=models.DO_NOTHING)
     type = models.ForeignKey('CaseType', on_delete=models.PROTECT)

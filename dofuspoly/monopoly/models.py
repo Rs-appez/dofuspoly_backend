@@ -9,7 +9,7 @@ class Game(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.created_at
+        return str(self.id)
 
 class Board(models.Model):
     cases = models.ManyToManyField('Case')

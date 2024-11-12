@@ -11,7 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
 class ColorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Color
-        fields = ['name', 'price_house']
+        fields = ['name']
 
 class RentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -44,14 +44,13 @@ class PlayerSerializer(serializers.ModelSerializer):
         fields = ['user', 'money', 'position', 'in_jail', 'jail_turns', 'cards', 'image']
 
 class CaseSerializer(serializers.ModelSerializer):
-    owner = PlayerSerializer()
     type = CaseTypeSerializer()
     color = ColorSerializer()
     rent = RentSerializer()
 
     class Meta:
         model = Case
-        fields = ['name', 'price', 'owner', 'type', 'color', 'houses', 'rent']
+        fields = ['name', 'price', 'type', 'color', 'rent']
 
 class BoardSerializer(serializers.ModelSerializer):
     cases = CaseSerializer(many=True)

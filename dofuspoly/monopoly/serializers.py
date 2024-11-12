@@ -68,6 +68,7 @@ class BoardSerializer(serializers.ModelSerializer):
 class GameSerializer(serializers.ModelSerializer):
     board = BoardSerializer()
     players = PlayerSerializer(many=True)
+    current_player = PlayerSerializer()
 
     class Meta:
         model = Game

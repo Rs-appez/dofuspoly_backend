@@ -17,7 +17,6 @@ class Board(models.Model):
 
 class Color(models.Model):
     name = models.CharField(max_length=255)
-    price_house = models.IntegerField()
 
     def __str__(self):
         return self.name
@@ -27,7 +26,6 @@ class Case(models.Model):
     name = models.CharField(max_length=255)
     position = models.IntegerField()
     price = models.IntegerField()
-    owner = models.ForeignKey('Player', null=True, blank=True, on_delete=models.DO_NOTHING)
     type = models.ForeignKey('CaseType', on_delete=models.PROTECT)
     color = models.ForeignKey('Color', null=True, blank=True, on_delete=models.PROTECT)
     rent = models.ForeignKey('Rent', null=True, blank=True, on_delete=models.DO_NOTHING)

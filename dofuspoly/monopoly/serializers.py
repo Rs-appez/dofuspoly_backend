@@ -44,13 +44,18 @@ class PlayerSerializer(serializers.ModelSerializer):
         fields = ['user', 'money', 'position', 'in_jail', 'jail_turns', 'cards', 'image']
 
 class CaseSerializer(serializers.ModelSerializer):
-    type = CaseTypeSerializer()
     color = ColorSerializer()
-    rent = RentSerializer()
+    type = CaseTypeSerializer()
 
     class Meta:
         model = Case
-        fields = ['name', 'price', 'type', 'color', 'rent']
+        fields = ['name', 'price', 'type', 'color']
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['type'] = representation['type']['type']
+        representation['color'] = representation['color']['name']
+        return representation
 
 class BoardSerializer(serializers.ModelSerializer):
     cases = CaseSerializer(many=True)

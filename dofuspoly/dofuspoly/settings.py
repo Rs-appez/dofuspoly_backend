@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,13 +26,14 @@ SECRET_KEY = "django-insecure-$5l^rj__7-8a0)gqiuyr5sgg!nt!m89k6oj-eqd=7i#o9+vr2m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost",]
-
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:4200",
+ALLOWED_HOSTS = [
+    config("BACKEND_HOST", default="127.0.0.1"),
+    config("FRONTEND_HOST", default="localhost"),
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://']
+CORS_ALLOWED_ORIGINS = [config("FRONTEND_HOST", default="http://localhost:4200")]
+
+CSRF_TRUSTED_ORIGINS = ['https://'+ config('BACKEND_HOST',default='')]
 
 # Application definition
 
@@ -56,8 +58,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    'corsheaders.middleware.CorsMiddleware',
-
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = "dofuspoly.urls"

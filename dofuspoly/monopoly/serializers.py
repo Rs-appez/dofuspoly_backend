@@ -43,6 +43,12 @@ class PlayerSerializer(serializers.ModelSerializer):
         model = Player
         fields = ['user', 'money', 'position', 'in_jail', 'jail_turns', 'cards', 'image']
 
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['user'] = representation['user']['username']
+        
+        return representation
+
 class CaseSerializer(serializers.ModelSerializer):
     color = ColorSerializer()
     type = CaseTypeSerializer()

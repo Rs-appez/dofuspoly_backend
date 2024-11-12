@@ -14,6 +14,14 @@ class Game(models.Model):
 class Board(models.Model):
     cases = models.ManyToManyField('Case')
 
+    def make_board(self):
+        self.cases.clear()
+        for case in Case.objects.all():
+            self.cases.add(case)
+        
+        self.save()
+
+
 
 class Color(models.Model):
     name = models.CharField(max_length=255)

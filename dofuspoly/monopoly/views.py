@@ -1,5 +1,7 @@
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated 
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.decorators import action
+from rest_framework.response import Response
 
 from .models import Board, Color, Case, Game, Rent, CaseType, Card, CardType, Player
 from .serializers import BoardSerializer, ColorSerializer, CaseSerializer, GameSerializer, RentSerializer, CaseTypeSerializer, CardSerializer, CardTypeSerializer, PlayerSerializer
@@ -9,6 +11,13 @@ class BoardViewSet(viewsets.ModelViewSet):
     serializer_class = BoardSerializer
     permission_classes = [IsAuthenticated]
 
+    @action(detail=False, methods=['post'], permission_classes=[IsAdminUser])
+    def make_board(self, request, pk=None):
+        board = Board()
+        board.save()
+        board.make_board()
+        return Response({'status': 'board created'})
+    
 class ColorViewSet(viewsets.ModelViewSet):
     queryset = Color.objects.all()
     serializer_class = ColorSerializer

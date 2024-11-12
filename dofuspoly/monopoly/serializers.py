@@ -54,7 +54,8 @@ class CaseSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         representation = super().to_representation(instance)
         representation['type'] = representation['type']['type']
-        representation['color'] = representation['color']['name']
+        if representation['color']:
+            representation['color'] = representation['color']['name']
         return representation
 
 class BoardSerializer(serializers.ModelSerializer):

@@ -6,4 +6,4 @@ djangorestframework==3.16.0
 pillow==11.1.0
 python-decouple==3.8
 sqlparse==0.5.3
-typing_extensions==4.12.2
+typing_extensions==4.13.1

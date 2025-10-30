@@ -1,0 +1,58 @@
+[
+  {
+    "model": "monopoly.player",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "money": 100,
+      "position": 1,
+      "in_jail": false,
+      "jail_turns": 0,
+      "image": "tournoye.png",
+      "cards": [],
+      "ownedCase": []
+    }
+  },
+  {
+    "model": "monopoly.player",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "money": 20,
+      "position": 1,
+      "in_jail": false,
+      "jail_turns": 0,
+      "image": "kanig.png",
+      "cards": [],
+      "ownedCase": []
+    }
+  },
+  {
+    "model": "monopoly.player",
+    "pk": 3,
+    "fields": {
+      "user": 3,
+      "money": 5,
+      "position": 1,
+      "in_jail": false,
+      "jail_turns": 0,
+      "image": "gligli.png",
+      "cards": [],
+      "ownedCase": []
+    }
+  },
+  {
+    "model": "monopoly.player",
+    "pk": 4,
+    "fields": {
+      "user": 4,
+      "money": 6855,
+      "position": 1,
+      "in_jail": false,
+      "jail_turns": 0,
+      "image": "mang.png",
+      "cards": [],
+      "ownedCase": []
+    }
+  }
+]

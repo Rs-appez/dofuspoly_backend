@@ -1,972 +1,916 @@
 [
-    {
-        "model": "monopoly.color",
-        "pk": 1,
-        "fields": {
-            "name": "Brown"
-        }
-    },
-    {
-        "model": "monopoly.color",
-        "pk": 2,
-        "fields": {
-            "name": "Light Blue"
-        }
-    },
-    {
-        "model": "monopoly.color",
-        "pk": 3,
-        "fields": {
-            "name": "Pink"
-        }
-    },
-    {
-        "model": "monopoly.color",
-        "pk": 4,
-        "fields": {
-            "name": "Orange"
-        }
-    },
-    {
-        "model": "monopoly.color",
-        "pk": 5,
-        "fields": {
-            "name": "Red"
-        }
-    },
-    {
-        "model": "monopoly.color",
-        "pk": 6,
-        "fields": {
-            "name": "Yellow"
-        }
-    },
-    {
-        "model": "monopoly.color",
-        "pk": 7,
-        "fields": {
-            "name": "Green"
-        }
-    },
-    {
-        "model": "monopoly.color",
-        "pk": 8,
-        "fields": {
-            "name": "Dark Blue"
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 1,
-        "fields": {
-            "name": "Start",
-            "position": 1,
-            "price": 0,
-            "type": 3,
-            "color": null,
-            "rent": null
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 2,
-        "fields": {
-            "name": "Cité d'astrub",
-            "position": 2,
-            "price": 60,
-            "type": 7,
-            "color": 1,
-            "rent": 1
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 3,
-        "fields": {
-            "name": "Carrière d'astrub",
-            "position": 4,
-            "price": 60,
-            "type": 7,
-            "color": 1,
-            "rent": 2
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 4,
-        "fields": {
-            "name": "Taxe d'abonement",
-            "position": 5,
-            "price": 0,
-            "type": 6,
-            "color": null,
-            "rent": null
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 5,
-        "fields": {
-            "name": "Carte communautaire",
-            "position": 3,
-            "price": 0,
-            "type": 9,
-            "color": null,
-            "rent": null
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 6,
-        "fields": {
-            "name": "Srambad",
-            "position": 6,
-            "price": 200,
-            "type": 4,
-            "color": null,
-            "rent": null
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 7,
-        "fields": {
-            "name": "Rives iridescentes",
-            "position": 7,
-            "price": 100,
-            "type": 7,
-            "color": 2,
-            "rent": 3
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 8,
-        "fields": {
-            "name": "Coeur immaculé",
-            "position": 9,
-            "price": 100,
-            "type": 7,
-            "color": 2,
-            "rent": 4
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 9,
-        "fields": {
-            "name": "Case chance",
-            "position": 8,
-            "price": 0,
-            "type": 8,
-            "color": null,
-            "rent": null
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 10,
-        "fields": {
-            "name": "Promontoire des cieux",
-            "position": 10,
-            "price": 120,
-            "type": 7,
-            "color": 2,
-            "rent": 5
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 11,
-        "fields": {
-            "name": "Jail",
-            "position": 11,
-            "price": 0,
-            "type": 2,
-            "color": null,
-            "rent": null
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 12,
-        "fields": {
-            "name": "île de pandala",
-            "position": 12,
-            "price": 140,
-            "type": 7,
-            "color": 3,
-            "rent": 6
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 13,
-        "fields": {
-            "name": "Taxe des zaaps",
-            "position": 13,
-            "price": 150,
-            "type": 5,
-            "color": null,
-            "rent": null
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 14,
-        "fields": {
-            "name": "île de Grobe",
-            "position": 14,
-            "price": 140,
-            "type": 7,
-            "color": 3,
-            "rent": 7
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 15,
-        "fields": {
-            "name": "âtole des possédés",
-            "position": 15,
-            "price": 160,
-            "type": 7,
-            "color": 3,
-            "rent": 8
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 16,
-        "fields": {
-            "name": "Xelorium",
-            "position": 16,
-            "price": 200,
-            "type": 4,
-            "color": null,
-            "rent": null
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 17,
-        "fields": {
-            "name": "Dunes des ossements",
-            "position": 17,
-            "price": 180,
-            "type": 7,
-            "color": 4,
-            "rent": 9
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 18,
-        "fields": {
-            "name": "Carte communautaire",
-            "position": 18,
-            "price": 0,
-            "type": 9,
-            "color": null,
-            "rent": null
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 19,
-        "fields": {
-            "name": "Cité Oublié",
-            "position": 19,
-            "price": 180,
-            "type": 7,
-            "color": 4,
-            "rent": 10
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 20,
-        "fields": {
-            "name": "Pyramide maudite",
-            "position": 20,
-            "price": 200,
-            "type": 7,
-            "color": 4,
-            "rent": 11
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 21,
-        "fields": {
-            "name": "Free Parking",
-            "position": 21,
-            "price": 0,
-            "type": 10,
-            "color": null,
-            "rent": null
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 22,
-        "fields": {
-            "name": "Bordure de Brâkmar",
-            "position": 22,
-            "price": 220,
-            "type": 7,
-            "color": 5,
-            "rent": 12
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 23,
-        "fields": {
-            "name": "Case chance",
-            "position": 23,
-            "price": 0,
-            "type": 8,
-            "color": null,
-            "rent": null
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 24,
-        "fields": {
-            "name": "L'enclume",
-            "position": 24,
-            "price": 220,
-            "type": 7,
-            "color": 5,
-            "rent": 13
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 25,
-        "fields": {
-            "name": "La cuirasse",
-            "position": 25,
-            "price": 240,
-            "type": 7,
-            "color": 5,
-            "rent": 14
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 26,
-        "fields": {
-            "name": "Ecaflipus",
-            "position": 26,
-            "price": 200,
-            "type": 4,
-            "color": null,
-            "rent": null
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 27,
-        "fields": {
-            "name": "Tréfonds des trithons",
-            "position": 27,
-            "price": 260,
-            "type": 7,
-            "color": 6,
-            "rent": 15
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 28,
-        "fields": {
-            "name": "Abîme de R'lyugluglu",
-            "position": 28,
-            "price": 260,
-            "type": 7,
-            "color": 6,
-            "rent": 16
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 29,
-        "fields": {
-            "name": "Taxe enclos",
-            "position": 29,
-            "price": 150,
-            "type": 5,
-            "color": null,
-            "rent": null
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 30,
-        "fields": {
-            "name": "Ancienne sufokia",
-            "position": 30,
-            "price": 280,
-            "type": 7,
-            "color": 6,
-            "rent": 17
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 31,
-        "fields": {
-            "name": "Go to jail",
-            "position": 31,
-            "price": 0,
-            "type": 1,
-            "color": null,
-            "rent": null
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 32,
-        "fields": {
-            "name": "île des naufragés",
-            "position": 32,
-            "price": 300,
-            "type": 7,
-            "color": 7,
-            "rent": 18
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 33,
-        "fields": {
-            "name": "L'arbre Hakam",
-            "position": 33,
-            "price": 300,
-            "type": 7,
-            "color": 7,
-            "rent": 19
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 34,
-        "fields": {
-            "name": "Carte communautaire",
-            "position": 34,
-            "price": 0,
-            "type": 9,
-            "color": null,
-            "rent": null
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 35,
-        "fields": {
-            "name": "Tourbière nauséabonde",
-            "position": 35,
-            "price": 320,
-            "type": 7,
-            "color": 7,
-            "rent": 20
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 36,
-        "fields": {
-            "name": "Enutrosor",
-            "position": 36,
-            "price": 200,
-            "type": 4,
-            "color": null,
-            "rent": null
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 37,
-        "fields": {
-            "name": "Case chance",
-            "position": 37,
-            "price": 0,
-            "type": 8,
-            "color": null,
-            "rent": null
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 38,
-        "fields": {
-            "name": "La bourgade",
-            "position": 38,
-            "price": 350,
-            "type": 7,
-            "color": 8,
-            "rent": 21
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 39,
-        "fields": {
-            "name": "taxe alister",
-            "position": 39,
-            "price": 0,
-            "type": 6,
-            "color": null,
-            "rent": null
-        }
-    },
-    {
-        "model": "monopoly.case",
-        "pk": 40,
-        "fields": {
-            "name": "Tour de clepsydre",
-            "position": 40,
-            "price": 400,
-            "type": 7,
-            "color": 8,
-            "rent": 22
-        }
-    },
-    {
-        "model": "monopoly.rent",
-        "pk": 1,
-        "fields": {
-            "price_house": 50,
-            "mortage": 30,
-            "rent": 2,
-            "rent_1_house": 10,
-            "rent_2_houses": 30,
-            "rent_3_houses": 90,
-            "rent_4_houses": 160,
-            "rent_hotel": 250
-        }
-    },
-    {
-        "model": "monopoly.rent",
-        "pk": 2,
-        "fields": {
-            "price_house": 50,
-            "mortage": 30,
-            "rent": 4,
-            "rent_1_house": 20,
-            "rent_2_houses": 60,
-            "rent_3_houses": 180,
-            "rent_4_houses": 160,
-            "rent_hotel": 250
-        }
-    },
-    {
-        "model": "monopoly.rent",
-        "pk": 3,
-        "fields": {
-            "price_house": 50,
-            "mortage": 50,
-            "rent": 6,
-            "rent_1_house": 30,
-            "rent_2_houses": 90,
-            "rent_3_houses": 270,
-            "rent_4_houses": 400,
-            "rent_hotel": 550
-        }
-    },
-    {
-        "model": "monopoly.rent",
-        "pk": 4,
-        "fields": {
-            "price_house": 100,
-            "mortage": 50,
-            "rent": 6,
-            "rent_1_house": 30,
-            "rent_2_houses": 90,
-            "rent_3_houses": 270,
-            "rent_4_houses": 400,
-            "rent_hotel": 550
-        }
-    },
-    {
-        "model": "monopoly.rent",
-        "pk": 5,
-        "fields": {
-            "price_house": 50,
-            "mortage": 60,
-            "rent": 8,
-            "rent_1_house": 40,
-            "rent_2_houses": 100,
-            "rent_3_houses": 300,
-            "rent_4_houses": 450,
-            "rent_hotel": 600
-        }
-    },
-    {
-        "model": "monopoly.rent",
-        "pk": 6,
-        "fields": {
-            "price_house": 100,
-            "mortage": 70,
-            "rent": 10,
-            "rent_1_house": 50,
-            "rent_2_houses": 150,
-            "rent_3_houses": 450,
-            "rent_4_houses": 625,
-            "rent_hotel": 750
-        }
-    },
-    {
-        "model": "monopoly.rent",
-        "pk": 7,
-        "fields": {
-            "price_house": 100,
-            "mortage": 70,
-            "rent": 10,
-            "rent_1_house": 50,
-            "rent_2_houses": 150,
-            "rent_3_houses": 450,
-            "rent_4_houses": 625,
-            "rent_hotel": 750
-        }
-    },
-    {
-        "model": "monopoly.rent",
-        "pk": 8,
-        "fields": {
-            "price_house": 100,
-            "mortage": 80,
-            "rent": 12,
-            "rent_1_house": 60,
-            "rent_2_houses": 180,
-            "rent_3_houses": 500,
-            "rent_4_houses": 700,
-            "rent_hotel": 900
-        }
-    },
-    {
-        "model": "monopoly.rent",
-        "pk": 9,
-        "fields": {
-            "price_house": 100,
-            "mortage": 90,
-            "rent": 14,
-            "rent_1_house": 70,
-            "rent_2_houses": 200,
-            "rent_3_houses": 550,
-            "rent_4_houses": 750,
-            "rent_hotel": 950
-        }
-    },
-    {
-        "model": "monopoly.rent",
-        "pk": 10,
-        "fields": {
-            "price_house": 100,
-            "mortage": 90,
-            "rent": 14,
-            "rent_1_house": 70,
-            "rent_2_houses": 200,
-            "rent_3_houses": 550,
-            "rent_4_houses": 750,
-            "rent_hotel": 950
-        }
-    },
-    {
-        "model": "monopoly.rent",
-        "pk": 11,
-        "fields": {
-            "price_house": 100,
-            "mortage": 100,
-            "rent": 16,
-            "rent_1_house": 80,
-            "rent_2_houses": 220,
-            "rent_3_houses": 600,
-            "rent_4_houses": 800,
-            "rent_hotel": 1000
-        }
-    },
-    {
-        "model": "monopoly.rent",
-        "pk": 12,
-        "fields": {
-            "price_house": 150,
-            "mortage": 110,
-            "rent": 18,
-            "rent_1_house": 90,
-            "rent_2_houses": 250,
-            "rent_3_houses": 700,
-            "rent_4_houses": 875,
-            "rent_hotel": 1050
-        }
-    },
-    {
-        "model": "monopoly.rent",
-        "pk": 13,
-        "fields": {
-            "price_house": 150,
-            "mortage": 110,
-            "rent": 18,
-            "rent_1_house": 90,
-            "rent_2_houses": 250,
-            "rent_3_houses": 700,
-            "rent_4_houses": 875,
-            "rent_hotel": 1050
-        }
-    },
-    {
-        "model": "monopoly.rent",
-        "pk": 14,
-        "fields": {
-            "price_house": 150,
-            "mortage": 120,
-            "rent": 20,
-            "rent_1_house": 100,
-            "rent_2_houses": 300,
-            "rent_3_houses": 750,
-            "rent_4_houses": 925,
-            "rent_hotel": 1100
-        }
-    },
-    {
-        "model": "monopoly.rent",
-        "pk": 15,
-        "fields": {
-            "price_house": 150,
-            "mortage": 130,
-            "rent": 22,
-            "rent_1_house": 110,
-            "rent_2_houses": 330,
-            "rent_3_houses": 800,
-            "rent_4_houses": 975,
-            "rent_hotel": 1150
-        }
-    },
-    {
-        "model": "monopoly.rent",
-        "pk": 16,
-        "fields": {
-            "price_house": 150,
-            "mortage": 130,
-            "rent": 22,
-            "rent_1_house": 110,
-            "rent_2_houses": 330,
-            "rent_3_houses": 800,
-            "rent_4_houses": 975,
-            "rent_hotel": 1150
-        }
-    },
-    {
-        "model": "monopoly.rent",
-        "pk": 17,
-        "fields": {
-            "price_house": 150,
-            "mortage": 140,
-            "rent": 24,
-            "rent_1_house": 120,
-            "rent_2_houses": 360,
-            "rent_3_houses": 850,
-            "rent_4_houses": 1025,
-            "rent_hotel": 1200
-        }
-    },
-    {
-        "model": "monopoly.rent",
-        "pk": 18,
-        "fields": {
-            "price_house": 200,
-            "mortage": 150,
-            "rent": 26,
-            "rent_1_house": 130,
-            "rent_2_houses": 390,
-            "rent_3_houses": 900,
-            "rent_4_houses": 1100,
-            "rent_hotel": 1275
-        }
-    },
-    {
-        "model": "monopoly.rent",
-        "pk": 19,
-        "fields": {
-            "price_house": 200,
-            "mortage": 150,
-            "rent": 26,
-            "rent_1_house": 130,
-            "rent_2_houses": 390,
-            "rent_3_houses": 900,
-            "rent_4_houses": 1100,
-            "rent_hotel": 1275
-        }
-    },
-    {
-        "model": "monopoly.rent",
-        "pk": 20,
-        "fields": {
-            "price_house": 200,
-            "mortage": 160,
-            "rent": 28,
-            "rent_1_house": 150,
-            "rent_2_houses": 450,
-            "rent_3_houses": 1000,
-            "rent_4_houses": 1200,
-            "rent_hotel": 1400
-        }
-    },
-    {
-        "model": "monopoly.rent",
-        "pk": 21,
-        "fields": {
-            "price_house": 350,
-            "mortage": 175,
-            "rent": 35,
-            "rent_1_house": 175,
-            "rent_2_houses": 500,
-            "rent_3_houses": 1100,
-            "rent_4_houses": 1300,
-            "rent_hotel": 1500
-        }
-    },
-    {
-        "model": "monopoly.rent",
-        "pk": 22,
-        "fields": {
-            "price_house": 200,
-            "mortage": 200,
-            "rent": 50,
-            "rent_1_house": 200,
-            "rent_2_houses": 600,
-            "rent_3_houses": 1400,
-            "rent_4_houses": 1700,
-            "rent_hotel": 2000
-        }
-    },
-    {
-        "model": "monopoly.casetype",
-        "pk": 1,
-        "fields": {
-            "type": "Go to Jail"
-        }
-    },
-    {
-        "model": "monopoly.casetype",
-        "pk": 2,
-        "fields": {
-            "type": "Jail"
-        }
-    },
-    {
-        "model": "monopoly.casetype",
-        "pk": 3,
-        "fields": {
-            "type": "Start"
-        }
-    },
-    {
-        "model": "monopoly.casetype",
-        "pk": 4,
-        "fields": {
-            "type": "Railroad"
-        }
-    },
-    {
-        "model": "monopoly.casetype",
-        "pk": 5,
-        "fields": {
-            "type": "Utility"
-        }
-    },
-    {
-        "model": "monopoly.casetype",
-        "pk": 6,
-        "fields": {
-            "type": "Tax"
-        }
-    },
-    {
-        "model": "monopoly.casetype",
-        "pk": 7,
-        "fields": {
-            "type": "Street"
-        }
-    },
-    {
-        "model": "monopoly.casetype",
-        "pk": 8,
-        "fields": {
-            "type": "Chance"
-        }
-    },
-    {
-        "model": "monopoly.casetype",
-        "pk": 9,
-        "fields": {
-            "type": "Community"
-        }
-    },
-    {
-        "model": "monopoly.casetype",
-        "pk": 10,
-        "fields": {
-            "type": "Parking"
-        }
-    },
-    {
-        "model": "monopoly.player",
-        "pk": 1,
-        "fields": {
-            "user": 1,
-            "money": 100,
-            "position": 1,
-            "in_jail": false,
-            "jail_turns": 0,
-            "image": "tournoye.png",
-            "cards": [],
-            "ownedCase": []
-        }
-    },
-    {
-        "model": "monopoly.player",
-        "pk": 2,
-        "fields": {
-            "user": 2,
-            "money": 20,
-            "position": 1,
-            "in_jail": false,
-            "jail_turns": 0,
-            "image": "kanig.png",
-            "cards": [],
-            "ownedCase": []
-        }
-    },
-    {
-        "model": "monopoly.player",
-        "pk": 3,
-        "fields": {
-            "user": 3,
-            "money": 5,
-            "position": 1,
-            "in_jail": false,
-            "jail_turns": 0,
-            "image": "gligli.png",
-            "cards": [],
-            "ownedCase": []
-        }
-    },
-    {
-        "model": "monopoly.player",
-        "pk": 4,
-        "fields": {
-            "user": 4,
-            "money": 6855,
-            "position": 1,
-            "in_jail": false,
-            "jail_turns": 0,
-            "image": "mang.png",
-            "cards": [],
-            "ownedCase": []
-        }
+  {
+    "model": "monopoly.color",
+    "pk": 1,
+    "fields": {
+      "name": "Brown"
     }
+  },
+  {
+    "model": "monopoly.color",
+    "pk": 2,
+    "fields": {
+      "name": "Light Blue"
+    }
+  },
+  {
+    "model": "monopoly.color",
+    "pk": 3,
+    "fields": {
+      "name": "Pink"
+    }
+  },
+  {
+    "model": "monopoly.color",
+    "pk": 4,
+    "fields": {
+      "name": "Orange"
+    }
+  },
+  {
+    "model": "monopoly.color",
+    "pk": 5,
+    "fields": {
+      "name": "Red"
+    }
+  },
+  {
+    "model": "monopoly.color",
+    "pk": 6,
+    "fields": {
+      "name": "Yellow"
+    }
+  },
+  {
+    "model": "monopoly.color",
+    "pk": 7,
+    "fields": {
+      "name": "Green"
+    }
+  },
+  {
+    "model": "monopoly.color",
+    "pk": 8,
+    "fields": {
+      "name": "Dark Blue"
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 1,
+    "fields": {
+      "name": "Start",
+      "position": 1,
+      "price": 0,
+      "type": 3,
+      "color": null,
+      "rent": null
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 2,
+    "fields": {
+      "name": "Cité d'astrub",
+      "position": 2,
+      "price": 60,
+      "type": 7,
+      "color": 1,
+      "rent": 1
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 3,
+    "fields": {
+      "name": "Carrière d'astrub",
+      "position": 4,
+      "price": 60,
+      "type": 7,
+      "color": 1,
+      "rent": 2
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 4,
+    "fields": {
+      "name": "Taxe d'abonement",
+      "position": 5,
+      "price": 0,
+      "type": 6,
+      "color": null,
+      "rent": null
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 5,
+    "fields": {
+      "name": "Carte communautaire",
+      "position": 3,
+      "price": 0,
+      "type": 9,
+      "color": null,
+      "rent": null
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 6,
+    "fields": {
+      "name": "Srambad",
+      "position": 6,
+      "price": 200,
+      "type": 4,
+      "color": null,
+      "rent": null
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 7,
+    "fields": {
+      "name": "Rives iridescentes",
+      "position": 7,
+      "price": 100,
+      "type": 7,
+      "color": 2,
+      "rent": 3
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 8,
+    "fields": {
+      "name": "Coeur immaculé",
+      "position": 9,
+      "price": 100,
+      "type": 7,
+      "color": 2,
+      "rent": 4
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 9,
+    "fields": {
+      "name": "Case chance",
+      "position": 8,
+      "price": 0,
+      "type": 8,
+      "color": null,
+      "rent": null
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 10,
+    "fields": {
+      "name": "Promontoire des cieux",
+      "position": 10,
+      "price": 120,
+      "type": 7,
+      "color": 2,
+      "rent": 5
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 11,
+    "fields": {
+      "name": "Jail",
+      "position": 11,
+      "price": 0,
+      "type": 2,
+      "color": null,
+      "rent": null
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 12,
+    "fields": {
+      "name": "île de pandala",
+      "position": 12,
+      "price": 140,
+      "type": 7,
+      "color": 3,
+      "rent": 6
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 13,
+    "fields": {
+      "name": "Taxe des zaaps",
+      "position": 13,
+      "price": 150,
+      "type": 5,
+      "color": null,
+      "rent": null
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 14,
+    "fields": {
+      "name": "île de Grobe",
+      "position": 14,
+      "price": 140,
+      "type": 7,
+      "color": 3,
+      "rent": 7
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 15,
+    "fields": {
+      "name": "âtole des possédés",
+      "position": 15,
+      "price": 160,
+      "type": 7,
+      "color": 3,
+      "rent": 8
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 16,
+    "fields": {
+      "name": "Xelorium",
+      "position": 16,
+      "price": 200,
+      "type": 4,
+      "color": null,
+      "rent": null
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 17,
+    "fields": {
+      "name": "Dunes des ossements",
+      "position": 17,
+      "price": 180,
+      "type": 7,
+      "color": 4,
+      "rent": 9
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 18,
+    "fields": {
+      "name": "Carte communautaire",
+      "position": 18,
+      "price": 0,
+      "type": 9,
+      "color": null,
+      "rent": null
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 19,
+    "fields": {
+      "name": "Cité Oublié",
+      "position": 19,
+      "price": 180,
+      "type": 7,
+      "color": 4,
+      "rent": 10
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 20,
+    "fields": {
+      "name": "Pyramide maudite",
+      "position": 20,
+      "price": 200,
+      "type": 7,
+      "color": 4,
+      "rent": 11
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 21,
+    "fields": {
+      "name": "Free Parking",
+      "position": 21,
+      "price": 0,
+      "type": 10,
+      "color": null,
+      "rent": null
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 22,
+    "fields": {
+      "name": "Bordure de Brâkmar",
+      "position": 22,
+      "price": 220,
+      "type": 7,
+      "color": 5,
+      "rent": 12
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 23,
+    "fields": {
+      "name": "Case chance",
+      "position": 23,
+      "price": 0,
+      "type": 8,
+      "color": null,
+      "rent": null
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 24,
+    "fields": {
+      "name": "L'enclume",
+      "position": 24,
+      "price": 220,
+      "type": 7,
+      "color": 5,
+      "rent": 13
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 25,
+    "fields": {
+      "name": "La cuirasse",
+      "position": 25,
+      "price": 240,
+      "type": 7,
+      "color": 5,
+      "rent": 14
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 26,
+    "fields": {
+      "name": "Ecaflipus",
+      "position": 26,
+      "price": 200,
+      "type": 4,
+      "color": null,
+      "rent": null
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 27,
+    "fields": {
+      "name": "Tréfonds des trithons",
+      "position": 27,
+      "price": 260,
+      "type": 7,
+      "color": 6,
+      "rent": 15
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 28,
+    "fields": {
+      "name": "Abîme de R'lyugluglu",
+      "position": 28,
+      "price": 260,
+      "type": 7,
+      "color": 6,
+      "rent": 16
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 29,
+    "fields": {
+      "name": "Taxe enclos",
+      "position": 29,
+      "price": 150,
+      "type": 5,
+      "color": null,
+      "rent": null
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 30,
+    "fields": {
+      "name": "Ancienne sufokia",
+      "position": 30,
+      "price": 280,
+      "type": 7,
+      "color": 6,
+      "rent": 17
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 31,
+    "fields": {
+      "name": "Go to jail",
+      "position": 31,
+      "price": 0,
+      "type": 1,
+      "color": null,
+      "rent": null
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 32,
+    "fields": {
+      "name": "île des naufragés",
+      "position": 32,
+      "price": 300,
+      "type": 7,
+      "color": 7,
+      "rent": 18
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 33,
+    "fields": {
+      "name": "L'arbre Hakam",
+      "position": 33,
+      "price": 300,
+      "type": 7,
+      "color": 7,
+      "rent": 19
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 34,
+    "fields": {
+      "name": "Carte communautaire",
+      "position": 34,
+      "price": 0,
+      "type": 9,
+      "color": null,
+      "rent": null
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 35,
+    "fields": {
+      "name": "Tourbière nauséabonde",
+      "position": 35,
+      "price": 320,
+      "type": 7,
+      "color": 7,
+      "rent": 20
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 36,
+    "fields": {
+      "name": "Enutrosor",
+      "position": 36,
+      "price": 200,
+      "type": 4,
+      "color": null,
+      "rent": null
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 37,
+    "fields": {
+      "name": "Case chance",
+      "position": 37,
+      "price": 0,
+      "type": 8,
+      "color": null,
+      "rent": null
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 38,
+    "fields": {
+      "name": "La bourgade",
+      "position": 38,
+      "price": 350,
+      "type": 7,
+      "color": 8,
+      "rent": 21
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 39,
+    "fields": {
+      "name": "taxe alister",
+      "position": 39,
+      "price": 0,
+      "type": 6,
+      "color": null,
+      "rent": null
+    }
+  },
+  {
+    "model": "monopoly.case",
+    "pk": 40,
+    "fields": {
+      "name": "Tour de clepsydre",
+      "position": 40,
+      "price": 400,
+      "type": 7,
+      "color": 8,
+      "rent": 22
+    }
+  },
+  {
+    "model": "monopoly.rent",
+    "pk": 1,
+    "fields": {
+      "price_house": 50,
+      "mortage": 30,
+      "rent": 2,
+      "rent_1_house": 10,
+      "rent_2_houses": 30,
+      "rent_3_houses": 90,
+      "rent_4_houses": 160,
+      "rent_hotel": 250
+    }
+  },
+  {
+    "model": "monopoly.rent",
+    "pk": 2,
+    "fields": {
+      "price_house": 50,
+      "mortage": 30,
+      "rent": 4,
+      "rent_1_house": 20,
+      "rent_2_houses": 60,
+      "rent_3_houses": 180,
+      "rent_4_houses": 160,
+      "rent_hotel": 250
+    }
+  },
+  {
+    "model": "monopoly.rent",
+    "pk": 3,
+    "fields": {
+      "price_house": 50,
+      "mortage": 50,
+      "rent": 6,
+      "rent_1_house": 30,
+      "rent_2_houses": 90,
+      "rent_3_houses": 270,
+      "rent_4_houses": 400,
+      "rent_hotel": 550
+    }
+  },
+  {
+    "model": "monopoly.rent",
+    "pk": 4,
+    "fields": {
+      "price_house": 100,
+      "mortage": 50,
+      "rent": 6,
+      "rent_1_house": 30,
+      "rent_2_houses": 90,
+      "rent_3_houses": 270,
+      "rent_4_houses": 400,
+      "rent_hotel": 550
+    }
+  },
+  {
+    "model": "monopoly.rent",
+    "pk": 5,
+    "fields": {
+      "price_house": 50,
+      "mortage": 60,
+      "rent": 8,
+      "rent_1_house": 40,
+      "rent_2_houses": 100,
+      "rent_3_houses": 300,
+      "rent_4_houses": 450,
+      "rent_hotel": 600
+    }
+  },
+  {
+    "model": "monopoly.rent",
+    "pk": 6,
+    "fields": {
+      "price_house": 100,
+      "mortage": 70,
+      "rent": 10,
+      "rent_1_house": 50,
+      "rent_2_houses": 150,
+      "rent_3_houses": 450,
+      "rent_4_houses": 625,
+      "rent_hotel": 750
+    }
+  },
+  {
+    "model": "monopoly.rent",
+    "pk": 7,
+    "fields": {
+      "price_house": 100,
+      "mortage": 70,
+      "rent": 10,
+      "rent_1_house": 50,
+      "rent_2_houses": 150,
+      "rent_3_houses": 450,
+      "rent_4_houses": 625,
+      "rent_hotel": 750
+    }
+  },
+  {
+    "model": "monopoly.rent",
+    "pk": 8,
+    "fields": {
+      "price_house": 100,
+      "mortage": 80,
+      "rent": 12,
+      "rent_1_house": 60,
+      "rent_2_houses": 180,
+      "rent_3_houses": 500,
+      "rent_4_houses": 700,
+      "rent_hotel": 900
+    }
+  },
+  {
+    "model": "monopoly.rent",
+    "pk": 9,
+    "fields": {
+      "price_house": 100,
+      "mortage": 90,
+      "rent": 14,
+      "rent_1_house": 70,
+      "rent_2_houses": 200,
+      "rent_3_houses": 550,
+      "rent_4_houses": 750,
+      "rent_hotel": 950
+    }
+  },
+  {
+    "model": "monopoly.rent",
+    "pk": 10,
+    "fields": {
+      "price_house": 100,
+      "mortage": 90,
+      "rent": 14,
+      "rent_1_house": 70,
+      "rent_2_houses": 200,
+      "rent_3_houses": 550,
+      "rent_4_houses": 750,
+      "rent_hotel": 950
+    }
+  },
+  {
+    "model": "monopoly.rent",
+    "pk": 11,
+    "fields": {
+      "price_house": 100,
+      "mortage": 100,
+      "rent": 16,
+      "rent_1_house": 80,
+      "rent_2_houses": 220,
+      "rent_3_houses": 600,
+      "rent_4_houses": 800,
+      "rent_hotel": 1000
+    }
+  },
+  {
+    "model": "monopoly.rent",
+    "pk": 12,
+    "fields": {
+      "price_house": 150,
+      "mortage": 110,
+      "rent": 18,
+      "rent_1_house": 90,
+      "rent_2_houses": 250,
+      "rent_3_houses": 700,
+      "rent_4_houses": 875,
+      "rent_hotel": 1050
+    }
+  },
+  {
+    "model": "monopoly.rent",
+    "pk": 13,
+    "fields": {
+      "price_house": 150,
+      "mortage": 110,
+      "rent": 18,
+      "rent_1_house": 90,
+      "rent_2_houses": 250,
+      "rent_3_houses": 700,
+      "rent_4_houses": 875,
+      "rent_hotel": 1050
+    }
+  },
+  {
+    "model": "monopoly.rent",
+    "pk": 14,
+    "fields": {
+      "price_house": 150,
+      "mortage": 120,
+      "rent": 20,
+      "rent_1_house": 100,
+      "rent_2_houses": 300,
+      "rent_3_houses": 750,
+      "rent_4_houses": 925,
+      "rent_hotel": 1100
+    }
+  },
+  {
+    "model": "monopoly.rent",
+    "pk": 15,
+    "fields": {
+      "price_house": 150,
+      "mortage": 130,
+      "rent": 22,
+      "rent_1_house": 110,
+      "rent_2_houses": 330,
+      "rent_3_houses": 800,
+      "rent_4_houses": 975,
+      "rent_hotel": 1150
+    }
+  },
+  {
+    "model": "monopoly.rent",
+    "pk": 16,
+    "fields": {
+      "price_house": 150,
+      "mortage": 130,
+      "rent": 22,
+      "rent_1_house": 110,
+      "rent_2_houses": 330,
+      "rent_3_houses": 800,
+      "rent_4_houses": 975,
+      "rent_hotel": 1150
+    }
+  },
+  {
+    "model": "monopoly.rent",
+    "pk": 17,
+    "fields": {
+      "price_house": 150,
+      "mortage": 140,
+      "rent": 24,
+      "rent_1_house": 120,
+      "rent_2_houses": 360,
+      "rent_3_houses": 850,
+      "rent_4_houses": 1025,
+      "rent_hotel": 1200
+    }
+  },
+  {
+    "model": "monopoly.rent",
+    "pk": 18,
+    "fields": {
+      "price_house": 200,
+      "mortage": 150,
+      "rent": 26,
+      "rent_1_house": 130,
+      "rent_2_houses": 390,
+      "rent_3_houses": 900,
+      "rent_4_houses": 1100,
+      "rent_hotel": 1275
+    }
+  },
+  {
+    "model": "monopoly.rent",
+    "pk": 19,
+    "fields": {
+      "price_house": 200,
+      "mortage": 150,
+      "rent": 26,
+      "rent_1_house": 130,
+      "rent_2_houses": 390,
+      "rent_3_houses": 900,
+      "rent_4_houses": 1100,
+      "rent_hotel": 1275
+    }
+  },
+  {
+    "model": "monopoly.rent",
+    "pk": 20,
+    "fields": {
+      "price_house": 200,
+      "mortage": 160,
+      "rent": 28,
+      "rent_1_house": 150,
+      "rent_2_houses": 450,
+      "rent_3_houses": 1000,
+      "rent_4_houses": 1200,
+      "rent_hotel": 1400
+    }
+  },
+  {
+    "model": "monopoly.rent",
+    "pk": 21,
+    "fields": {
+      "price_house": 350,
+      "mortage": 175,
+      "rent": 35,
+      "rent_1_house": 175,
+      "rent_2_houses": 500,
+      "rent_3_houses": 1100,
+      "rent_4_houses": 1300,
+      "rent_hotel": 1500
+    }
+  },
+  {
+    "model": "monopoly.rent",
+    "pk": 22,
+    "fields": {
+      "price_house": 200,
+      "mortage": 200,
+      "rent": 50,
+      "rent_1_house": 200,
+      "rent_2_houses": 600,
+      "rent_3_houses": 1400,
+      "rent_4_houses": 1700,
+      "rent_hotel": 2000
+    }
+  },
+  {
+    "model": "monopoly.casetype",
+    "pk": 1,
+    "fields": {
+      "type": "Go to Jail"
+    }
+  },
+  {
+    "model": "monopoly.casetype",
+    "pk": 2,
+    "fields": {
+      "type": "Jail"
+    }
+  },
+  {
+    "model": "monopoly.casetype",
+    "pk": 3,
+    "fields": {
+      "type": "Start"
+    }
+  },
+  {
+    "model": "monopoly.casetype",
+    "pk": 4,
+    "fields": {
+      "type": "Railroad"
+    }
+  },
+  {
+    "model": "monopoly.casetype",
+    "pk": 5,
+    "fields": {
+      "type": "Utility"
+    }
+  },
+  {
+    "model": "monopoly.casetype",
+    "pk": 6,
+    "fields": {
+      "type": "Tax"
+    }
+  },
+  {
+    "model": "monopoly.casetype",
+    "pk": 7,
+    "fields": {
+      "type": "Street"
+    }
+  },
+  {
+    "model": "monopoly.casetype",
+    "pk": 8,
+    "fields": {
+      "type": "Chance"
+    }
+  },
+  {
+    "model": "monopoly.casetype",
+    "pk": 9,
+    "fields": {
+      "type": "Community"
+    }
+  },
+  {
+    "model": "monopoly.casetype",
+    "pk": 10,
+    "fields": {
+      "type": "Parking"
+    }
+  }
 ]

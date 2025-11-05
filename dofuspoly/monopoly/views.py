@@ -52,7 +52,8 @@ class GameViewSet(viewsets.ModelViewSet):
 
     @action(detail=True, methods=["get"], permission_classes=[AllowAny])
     def roll_dice(self, request, pk=None):
-        game = self.get_object()
+        game: Game = self.get_object()
+        # player = get_object_or_404(Player, user=request.user)
         try:
             game.roll_dice()
         except GameException as e:

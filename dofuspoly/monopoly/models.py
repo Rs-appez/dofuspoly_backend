@@ -30,9 +30,9 @@ class Game(models.Model):
         self.dice1Value = random.randint(1, 6)
         self.dice2Value = random.randint(1, 6)
 
-        self.save()
+        self.current_player.move((self.dice1Value, self.dice2Value))
 
-        self.current_player.move(self.dice1Value + self.dice2Value)
+        self.save()
 
 
 class Board(models.Model):
@@ -115,8 +115,11 @@ class Player(models.Model):
     def __str__(self):
         return self.user.username
 
-    def move(self, steps):
-        self.position += steps
+    def move(self, dice_values: [int, int]):
+        if self.in_jail and dice_values[0] != dice_values[1]:
+            return
+
+        self.position += sum(dice_values)
         self.position = self.position % 40
         self.save()
 

@@ -43,12 +43,12 @@ class CardSerializer(serializers.ModelSerializer):
 
 class PlayerSerializer(serializers.ModelSerializer):
     cards = CardSerializer(many=True)
-    user = UserSerializer()
+    username = UserSerializer(source="user")
 
     class Meta:
         model = Player
         fields = [
-            "user",
+            "username",
             "money",
             "position",
             "in_jail",
@@ -59,7 +59,7 @@ class PlayerSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
-        representation["user"] = representation["user"]["username"]
+        representation["username"] = representation["username"]["username"]
 
         return representation
 

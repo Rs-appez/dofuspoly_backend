@@ -117,6 +117,9 @@ class Player(models.Model):
         self.position = self.position % 40
         self.save()
 
+    def get_current_game(self):
+        return Game.objects.filter(players=self, finished=False).first()
+
 
 class OwnedCase(models.Model):
     case = models.ForeignKey("Case", on_delete=models.CASCADE)

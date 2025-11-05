@@ -15,6 +15,8 @@ class Game(models.Model):
         related_name="current_player",
     )
     turn = models.IntegerField(default=0)
+    dice1Value = models.IntegerField(default=6)
+    dice2Value = models.IntegerField(default=6)
     finished = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -25,11 +27,12 @@ class Game(models.Model):
         if not self.current_player:
             raise GameException("No current player set")
 
-        dice1 = random.randint(1, 6)
+        self.dice1Value = random.randint(1, 6)
+        self.dice2Value = random.randint(1, 6)
 
-        self.current_player.move(dice1)
+        self.save()
 
-        return dice1
+        self.current_player.move(self.dice1Value + self.dice2Value)
 
 
 class Board(models.Model):

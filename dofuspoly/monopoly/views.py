@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
@@ -50,14 +50,20 @@ class GameViewSet(viewsets.ModelViewSet):
     serializer_class = GameSerializer
     permission_classes = [IsAuthenticated]
 
-    @action(detail=True, methods=["post"], permission_classes=[IsAdminUser])
+    @action(detail=True, methods=["get"], permission_classes=[AllowAny])
     def roll_dice(self, request, pk=None):
         game = self.get_object()
         try:
-            roll = game.roll_dice()
+            game.roll_dice()
         except GameException as e:
             return Response({"status": "error", "message": str(e)}, status=400)
-        return Response({"status": "dice rolled", "roll": roll})
+        game_serializer = self.get_serializer(game)
+        return Response(
+            {
+                "status": "dice rolled",
+                "game": game_serializer.data,
+            }
+        )
 
     @action(detail=False, methods=["get"], permission_classes=[AllowAny])
     def current_game(self, request):

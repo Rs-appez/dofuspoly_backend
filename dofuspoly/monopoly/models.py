@@ -1,4 +1,5 @@
 from django.db import models
+from .exceptions import GameException
 
 import random
 
@@ -21,6 +22,9 @@ class Game(models.Model):
         return str(self.id)
 
     def roll_dice(self):
+        if not self.current_player:
+            raise GameException("No current player set")
+
         dice1 = random.randint(1, 6)
 
         self.current_player.move(dice1)

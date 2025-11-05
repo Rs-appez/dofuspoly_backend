@@ -6,34 +6,40 @@ from django.contrib.auth.models import User
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username']
+        fields = ["username"]
+
 
 class ColorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Color
-        fields = ['name']
+        fields = ["name"]
+
 
 class RentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rent
-        fields = '__all__'
+        fields = "__all__"
+
 
 class CaseTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = CaseType
-        fields = ['type']
+        fields = ["type"]
+
 
 class CardTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = CardType
-        fields = ['type']
+        fields = ["type"]
+
 
 class CardSerializer(serializers.ModelSerializer):
     type = CardTypeSerializer()
 
     class Meta:
         model = Card
-        fields = ['name', 'description', 'type', 'value']
+        fields = ["name", "description", "type", "value"]
+
 
 class PlayerSerializer(serializers.ModelSerializer):
     cards = CardSerializer(many=True)
@@ -41,13 +47,22 @@ class PlayerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Player
-        fields = ['user', 'money', 'position', 'in_jail', 'jail_turns', 'cards', 'image']
+        fields = [
+            "user",
+            "money",
+            "position",
+            "in_jail",
+            "jail_turns",
+            "cards",
+            "image",
+        ]
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
-        representation['user'] = representation['user']['username']
-        
+        representation["user"] = representation["user"]["username"]
+
         return representation
+
 
 class CaseSerializer(serializers.ModelSerializer):
     color = ColorSerializer()
@@ -55,21 +70,23 @@ class CaseSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Case
-        fields = ['name', 'price', 'type', 'color']
+        fields = ["name", "price", "type", "color"]
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
-        representation['type'] = representation['type']['type']
-        if representation['color']:
-            representation['color'] = representation['color']['name']
+        representation["type"] = representation["type"]["type"]
+        if representation["color"]:
+            representation["color"] = representation["color"]["name"]
         return representation
+
 
 class BoardSerializer(serializers.ModelSerializer):
     cases = CaseSerializer(many=True)
 
     class Meta:
         model = Board
-        fields = ['cases']
+        fields = ["cases"]
+
 
 class GameSerializer(serializers.ModelSerializer):
     board = BoardSerializer()
@@ -78,5 +95,4 @@ class GameSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Game
-        fields = '__all__'
-
+        fields = "__all__"

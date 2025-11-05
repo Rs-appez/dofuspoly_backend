@@ -2,7 +2,10 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from django.shortcuts import get_object_or_404
 
+
+from .exceptions import GameException
 from .models import Board, Color, Case, Game, Rent, CaseType, Card, CardType, Player
 from .serializers import (
     BoardSerializer,
@@ -50,8 +53,20 @@ class GameViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=["post"], permission_classes=[IsAdminUser])
     def roll_dice(self, request, pk=None):
         game = self.get_object()
-        result = game.roll_dice()
-        return Response({"status": "dice rolled", "result": result})
+        try:
+            roll = game.roll_dice()
+        except GameException as e:
+            return Response({"status": "error", "message": str(e)}, status=400)
+        return Response({"status": "dice rolled", "roll": roll})
+
+    @action(detail=False, methods=["get"], permission_classes=[AllowAny])
+    def current_game(self, request):
+        # player = get_object_or_404(Player, user=request.user)
+        player_id = request.query_params.get("user")
+        player = get_object_or_404(Player, id=player_id)
+        game = Game.objects.filter(players=player, finished=False).first()
+        serializer = self.get_serializer(game)
+        return Response(serializer.data)
 
 
 class RentViewSet(viewsets.ModelViewSet):

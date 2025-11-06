@@ -27,12 +27,14 @@ class Game(models.Model):
         if not self.current_player:
             raise GameException("No current player set")
 
-        self.dice1Value = random.randint(1, 6)
-        self.dice2Value = random.randint(1, 6)
+        if self.current_player.can_player_roll():
+            self.current_player.has_rolled = True
+            self.dice1Value = random.randint(1, 6)
+            self.dice2Value = random.randint(1, 6)
 
-        self.current_player.move((self.dice1Value, self.dice2Value))
+            self.current_player.move((self.dice1Value, self.dice2Value))
 
-        self.save()
+            self.save()
 
 
 class Board(models.Model):
@@ -106,6 +108,7 @@ class Player(models.Model):
     user = models.ForeignKey("auth.User", on_delete=models.CASCADE)
     money = models.IntegerField()
     position = models.IntegerField()
+    has_rolled = models.BooleanField(default=True)
     in_jail = models.BooleanField(default=False)
     jail_turns = models.IntegerField(default=0)
     cards = models.ManyToManyField("Card", blank=True)
@@ -114,6 +117,12 @@ class Player(models.Model):
 
     def __str__(self):
         return self.user.username
+
+    def can_player_roll(self) -> bool:
+        if self.has_rolled:
+            raise GameException("You have already rolled this turn")
+
+        return True
 
     def move(self, dice_values: [int, int]):
         if self.in_jail and dice_values[0] != dice_values[1]:

@@ -50,14 +50,21 @@ class GameViewSet(viewsets.ModelViewSet):
     serializer_class = GameSerializer
     permission_classes = [IsAuthenticated]
 
-    @action(detail=True, methods=["get"], permission_classes=[AllowAny])
+    @action(detail=True, methods=["get"])
     def roll_dice(self, request, pk=None):
         game: Game = self.get_object()
-        # player = get_object_or_404(Player, user=request.user)
+        player = get_object_or_404(Player, user=request.user)
+
+        if game.current_player != player:
+            return Response(
+                {"status": "error", "message": "It's not your turn!"}, status=403
+            )
+
         try:
             game.roll_dice()
         except GameException as e:
-            return Response({"status": "error", "message": str(e)}, status=400)
+            return Response({"status": "error", "message": str(e)}, status=403)
+
         game_serializer = self.get_serializer(game)
         return Response(
             {
@@ -68,9 +75,7 @@ class GameViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=["get"], permission_classes=[AllowAny])
     def current_game(self, request):
-        # player = get_object_or_404(Player, user=request.user)
-        player_id = request.query_params.get("user")
-        player = get_object_or_404(Player, id=player_id)
+        player = get_object_or_404(Player, user=request.user)
         game = Game.objects.filter(players=player, finished=False).first()
         serializer = self.get_serializer(game)
         return Response(serializer.data)

@@ -33,18 +33,6 @@ class BoardViewSet(viewsets.ModelViewSet):
         return Response({"status": "board created"})
 
 
-class ColorViewSet(viewsets.ModelViewSet):
-    queryset = Color.objects.all()
-    serializer_class = ColorSerializer
-    permission_classes = [IsAuthenticated]
-
-
-class CaseViewSet(viewsets.ModelViewSet):
-    queryset = Case.objects.all()
-    serializer_class = CaseSerializer
-    permission_classes = [IsAuthenticated]
-
-
 class GameViewSet(viewsets.ModelViewSet):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
@@ -79,30 +67,6 @@ class GameViewSet(viewsets.ModelViewSet):
         game = Game.objects.filter(players=player, finished=False).first()
         serializer = self.get_serializer(game)
         return Response(serializer.data)
-
-
-class RentViewSet(viewsets.ModelViewSet):
-    queryset = Rent.objects.all()
-    serializer_class = RentSerializer
-    permission_classes = [IsAuthenticated]
-
-
-class CaseTypeViewSet(viewsets.ModelViewSet):
-    queryset = CaseType.objects.all()
-    serializer_class = CaseTypeSerializer
-    permission_classes = [IsAuthenticated]
-
-
-class CardViewSet(viewsets.ModelViewSet):
-    queryset = Card.objects.all()
-    serializer_class = CardSerializer
-    permission_classes = [IsAuthenticated]
-
-
-class CardTypeViewSet(viewsets.ModelViewSet):
-    queryset = CardType.objects.all()
-    serializer_class = CardTypeSerializer
-    permission_classes = [IsAuthenticated]
 
 
 class PlayerViewSet(viewsets.ModelViewSet):

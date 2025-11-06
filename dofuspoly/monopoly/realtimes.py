@@ -17,7 +17,6 @@ def update_game(game: Game) -> None:
             "type": "new_ticks",
             "content": json.dumps(
                 {
-                    "type": "game_update",
                     "game": GameSerializer(game).data,
                 }
             ),

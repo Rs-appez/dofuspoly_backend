@@ -44,10 +44,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    #DRF
     "rest_framework",
     "rest_framework.authtoken",
-    "monopoly",
+    #other
     "corsheaders",
+    #my apps
+    "monopoly",
 ]
 
 MIDDLEWARE = [

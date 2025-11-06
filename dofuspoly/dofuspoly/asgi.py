@@ -12,7 +12,7 @@ import os
 from django.core.asgi import get_asgi_application
 from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.auth import AuthMiddlewareStack
-from dofuspoly.urls import websocket_urlpatterns
+from dofuspoly.routing import websocket_urlpatterns
 
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dofuspoly.settings")

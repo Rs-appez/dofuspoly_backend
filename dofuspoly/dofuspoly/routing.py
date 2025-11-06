@@ -1,0 +1,3 @@
+from monopoly.routing import websocket_urlpatterns as monopoly_websocket_urlpatterns
+
+websocket_urlpatterns = monopoly_websocket_urlpatterns

@@ -5,8 +5,6 @@ from rest_framework_simplejwt.views import (
 from django.contrib import admin
 from django.urls import path, include
 
-from monopoly.urls import websocket_urlpatterns as monopoly_websocket_urlpatterns
-
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
@@ -14,4 +12,3 @@ urlpatterns = [
     path("dofuspoly/", include("monopoly.urls")),
 ]
 
-websocket_urlpatterns = monopoly_websocket_urlpatterns

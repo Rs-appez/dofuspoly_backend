@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     #other
     "corsheaders",
+    "channels",
     #my apps
     "monopoly",
 ]
@@ -82,7 +83,15 @@ TEMPLATES = [
     },
 ]
 
+ASGI_APPLICATION = "dofuspoly.asgi.application"
+
 WSGI_APPLICATION = "dofuspoly.wsgi.application"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+    },
+}
 
 
 # Database

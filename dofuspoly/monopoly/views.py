@@ -48,6 +48,7 @@ class GameViewSet(viewsets.ModelViewSet):
         except GameException as e:
             return Response({"status": "error", "message": str(e)}, status=403)
 
+        update_game(game)
         game_serializer = self.get_serializer(game)
         return Response(
             {

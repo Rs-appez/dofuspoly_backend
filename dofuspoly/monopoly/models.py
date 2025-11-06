@@ -39,6 +39,15 @@ class Game(models.Model):
 
             self.save()
 
+    def end_turn(self):
+        players = list(self.players.all())
+        current_index = players.index(self.current_player)
+        next_index = (current_index + 1) % len(players)
+        self.current_player = players[next_index]
+        self.current_player.has_rolled = False
+        self.turn += 1
+        self.save()
+
 
 class Board(models.Model):
     cases = models.ManyToManyField("Case")

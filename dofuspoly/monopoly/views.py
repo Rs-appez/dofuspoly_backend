@@ -57,12 +57,33 @@ class GameViewSet(viewsets.ModelViewSet):
             }
         )
 
-    @action(detail=False, methods=["get"], permission_classes=[AllowAny])
+    @action(detail=False, methods=["get"])
     def current_game(self, request):
         player = get_object_or_404(Player, user=request.user)
         game = Game.objects.filter(players=player, finished=False).first()
         serializer = self.get_serializer(game)
         return Response(serializer.data)
+
+    @action(detail=False, methods=["get"], permission_classes=[IsAuthenticated])
+    def end_turn(self, request):
+        player = get_object_or_404(Player, user=request.user)
+        game = Game.objects.filter(players=player, finished=False).first()
+
+        if game.current_player != player:
+            return Response(
+                {"status": "error", "message": "It's not your turn!"}, status=403
+            )
+
+        if not player.has_rolled:
+            return Response(
+                {"status": "error", "message": "You must roll the dice before ending your turn!"},
+                status=403,
+            )
+
+        game.end_turn()
+        update_game(game)
+        serializer = self.get_serializer(game)
+        return Response({"status": "turn ended", "game": serializer.data})
 
 
 class PlayerViewSet(viewsets.ModelViewSet):

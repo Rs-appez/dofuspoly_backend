@@ -1,11 +1,13 @@
-from django.db import models
-from .exceptions import GameException
-
 import random
+import uuid
+
+from django.db import models
+
+from .exceptions import GameException
 
 
 class Game(models.Model):
-    id = models.UUIDField(primary_key=True, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     board = models.ForeignKey("Board", on_delete=models.CASCADE)
     players = models.ManyToManyField("Player")
     current_player = models.ForeignKey(
@@ -106,7 +108,7 @@ class CardType(models.Model):
 
 
 class Player(models.Model):
-    id = models.UUIDField(primary_key=True, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey("auth.User", on_delete=models.CASCADE)
     money = models.IntegerField()
     position = models.IntegerField()

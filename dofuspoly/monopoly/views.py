@@ -6,16 +6,11 @@ from django.shortcuts import get_object_or_404
 
 
 from .exceptions import GameException
-from .models import Board, Color, Case, Game, Rent, CaseType, Card, CardType, Player
+from .realtimes import update_game
+from .models import Board, Game, Player
 from .serializers import (
     BoardSerializer,
-    ColorSerializer,
-    CaseSerializer,
     GameSerializer,
-    RentSerializer,
-    CaseTypeSerializer,
-    CardSerializer,
-    CardTypeSerializer,
     PlayerSerializer,
 )
 

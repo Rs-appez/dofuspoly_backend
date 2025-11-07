@@ -51,12 +51,12 @@ class Game(models.Model):
 
 
 class Board(models.Model):
-    cases = models.ManyToManyField("Case")
+    spaces = models.ManyToManyField("Space")
 
     def make_board(self):
-        self.cases.clear()
-        for case in Case.objects.all():
-            self.cases.add(case)
+        self.spaces.clear()
+        for case in Space.objects.all():
+            self.spaces.add(case)
 
         self.save()
 
@@ -68,11 +68,11 @@ class Color(models.Model):
         return self.name
 
 
-class Case(models.Model):
+class Space(models.Model):
     name = models.CharField(max_length=255)
     position = models.IntegerField()
     price = models.IntegerField()
-    type = models.ForeignKey("CaseType", on_delete=models.PROTECT)
+    type = models.ForeignKey("SpaceType", on_delete=models.PROTECT)
     color = models.ForeignKey("Color", null=True, blank=True, on_delete=models.PROTECT)
     rent = models.ForeignKey("Rent", null=True, blank=True, on_delete=models.DO_NOTHING)
 
@@ -91,7 +91,7 @@ class Rent(models.Model):
     rent_hotel = models.IntegerField()
 
 
-class CaseType(models.Model):
+class SpaceType(models.Model):
     type = models.CharField(max_length=255)
 
     def __str__(self):
@@ -126,7 +126,7 @@ class Player(models.Model):
     in_jail = models.BooleanField(default=False)
     jail_turns = models.IntegerField(default=0)
     cards = models.ManyToManyField("Card", blank=True)
-    ownedCase = models.ManyToManyField("OwnedCase", blank=True)
+    ownedSpace = models.ManyToManyField("OwnedSpace", blank=True)
     image = models.CharField(max_length=255, default="default.png")
 
     def __str__(self):
@@ -150,8 +150,8 @@ class Player(models.Model):
         return Game.objects.filter(players=self, finished=False).first()
 
 
-class OwnedCase(models.Model):
-    case = models.ForeignKey("Case", on_delete=models.CASCADE)
+class OwnedSpace(models.Model):
+    space = models.ForeignKey("Space", on_delete=models.CASCADE)
     mortgaged = models.BooleanField(default=False)
     houses = models.IntegerField(default=0)
     hotel = models.BooleanField(default=False)

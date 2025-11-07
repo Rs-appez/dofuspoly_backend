@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Board, Color, Case, Game, Rent, CaseType, Card, CardType, Player
+from .models import Board, Color, Space, Game, Rent, SpaceType, Card, CardType, Player
 from django.contrib.auth.models import User
 
 
@@ -21,9 +21,9 @@ class RentSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class CaseTypeSerializer(serializers.ModelSerializer):
+class SpaceTypeSerializer(serializers.ModelSerializer):
     class Meta:
-        model = CaseType
+        model = SpaceType
         fields = ["type"]
 
 
@@ -64,12 +64,12 @@ class PlayerSerializer(serializers.ModelSerializer):
         return representation
 
 
-class CaseSerializer(serializers.ModelSerializer):
+class SpaceSerializer(serializers.ModelSerializer):
     color = ColorSerializer()
-    type = CaseTypeSerializer()
+    type = SpaceTypeSerializer()
 
     class Meta:
-        model = Case
+        model = Space
         fields = ["name", "price", "type", "color"]
 
     def to_representation(self, instance):
@@ -81,11 +81,11 @@ class CaseSerializer(serializers.ModelSerializer):
 
 
 class BoardSerializer(serializers.ModelSerializer):
-    cases = CaseSerializer(many=True)
+    spaces = SpaceSerializer(many=True)
 
     class Meta:
         model = Board
-        fields = ["cases"]
+        fields = ["spaces"]
 
 
 class GameSerializer(serializers.ModelSerializer):

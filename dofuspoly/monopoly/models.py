@@ -46,6 +46,7 @@ class Game(models.Model):
         self.current_player = players[next_index]
         self.current_player.has_rolled = False
         self.turn += 1
+        self.current_player.save()
         self.save()
 
 

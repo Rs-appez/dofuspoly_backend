@@ -70,7 +70,7 @@ class SpaceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Space
-        fields = ["name", "price", "type", "color"]
+        fields = ["name", "price", "type", "color", "position"]
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)

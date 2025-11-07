@@ -49,11 +49,9 @@ class GameViewSet(viewsets.ModelViewSet):
             return Response({"status": "error", "message": str(e)}, status=403)
 
         update_game(game)
-        game_serializer = self.get_serializer(game)
         return Response(
             {
                 "status": "dice rolled",
-                "game": game_serializer.data,
             }
         )
 
@@ -76,14 +74,16 @@ class GameViewSet(viewsets.ModelViewSet):
 
         if not player.has_rolled:
             return Response(
-                {"status": "error", "message": "You must roll the dice before ending your turn!"},
+                {
+                    "status": "error",
+                    "message": "You must roll the dice before ending your turn!",
+                },
                 status=403,
             )
 
         game.end_turn()
         update_game(game)
-        serializer = self.get_serializer(game)
-        return Response({"status": "turn ended", "game": serializer.data})
+        return Response({"status": "turn ended"})
 
 
 class PlayerViewSet(viewsets.ModelViewSet):

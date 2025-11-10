@@ -153,9 +153,6 @@ class Player(models.Model):
         if self.money < space.price:
             raise GameException("You don't have enough money to buy this space")
 
-        if self.position != space.position:
-            raise GameException("You are not on this space")
-
         game = self.get_current_game()
         if game.current_player != self:
             raise GameException("It's not your turn")

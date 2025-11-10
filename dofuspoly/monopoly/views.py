@@ -58,7 +58,7 @@ class GameViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=["get"])
     def current_game(self, request):
         player = get_object_or_404(Player, user=request.user)
-        game = Game.objects.filter(players=player, finished=False).first()
+        game = player.get_current_game()
         serializer = self.get_serializer(game)
         return Response(serializer.data)
 

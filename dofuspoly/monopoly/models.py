@@ -155,3 +155,23 @@ class OwnedSpace(models.Model):
     mortgaged = models.BooleanField(default=False)
     houses = models.IntegerField(default=0)
     hotel = models.BooleanField(default=False)
+
+    def calculate_rent(self) -> int:
+        if self.mortgaged:
+            return 0
+
+        rent = self.space.rent.rent
+
+        if self.hotel:
+            rent = self.space.rent.rent_hotel
+        else:
+            if self.houses == 1:
+                rent = self.space.rent.rent_1_house
+            elif self.houses == 2:
+                rent = self.space.rent.rent_2_houses
+            elif self.houses == 3:
+                rent = self.space.rent.rent_3_houses
+            elif self.houses == 4:
+                rent = self.space.rent.rent_4_houses
+
+        return rent

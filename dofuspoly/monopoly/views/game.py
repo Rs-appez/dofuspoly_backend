@@ -1,32 +1,15 @@
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
-
-
-from .exceptions import GameException
-from .decorators import is_player_in_game
-from .realtimes import update_game
-from .models import Board, Game, Player
-from .serializers import (
-    BoardSerializer,
+from ..exceptions import GameException
+from ..decorators import is_player_in_game
+from ..realtimes import update_game
+from ..models import Game, Player
+from ..serializers import (
     GameSerializer,
-    PlayerSerializer,
 )
-
-
-class BoardViewSet(viewsets.ModelViewSet):
-    queryset = Board.objects.all()
-    serializer_class = BoardSerializer
-    permission_classes = [IsAuthenticated]
-
-    @action(detail=False, methods=["post"], permission_classes=[IsAdminUser])
-    def make_board(self, request, pk=None):
-        board = Board()
-        board.save()
-        board.make_board()
-        return Response({"status": "board created"})
 
 
 class GameViewSet(viewsets.ModelViewSet):
@@ -75,9 +58,3 @@ class GameViewSet(viewsets.ModelViewSet):
 
         update_game(game)
         return Response({"status": "space bought"})
-
-
-class PlayerViewSet(viewsets.ModelViewSet):
-    queryset = Player.objects.all()
-    serializer_class = PlayerSerializer
-    permission_classes = [IsAuthenticated]

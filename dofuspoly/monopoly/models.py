@@ -4,6 +4,7 @@ import uuid
 from django.db import models
 
 from .exceptions import GameException
+from .decorators import player_turn_required
 
 
 class Game(models.Model):
@@ -30,7 +31,7 @@ class Game(models.Model):
         if not self.current_player:
             raise GameException("No current player set")
 
-        if self.current_player.can_player_roll():
+        if self.current_player.can_player_roll(self):
             self.current_player.has_rolled = True
             self.dice1Value = random.randint(1, 6)
             self.dice2Value = random.randint(1, 6)
@@ -44,9 +45,8 @@ class Game(models.Model):
         current_index = players.index(self.current_player)
         next_index = (current_index + 1) % len(players)
         self.current_player = players[next_index]
-        self.current_player.has_rolled = False
+        self.current_player.allow_roll()
         self.turn += 1
-        self.current_player.save()
         self.save()
 
 
@@ -135,7 +135,18 @@ class Player(models.Model):
     def get_current_game(self):
         return Game.objects.filter(players=self, finished=False).first()
 
-    def can_player_roll(self) -> bool:
+    def allow_roll(self):
+        self.has_rolled = False
+        self.save()
+
+    @player_turn_required
+    def end_turn(self, game: Game):
+        if not self.has_rolled:
+            raise GameException("You must roll before ending your turn")
+        game.end_turn()
+
+    @player_turn_required
+    def can_player_roll(self, game: Game) -> bool:
         if self.has_rolled:
             raise GameException("You have already rolled this turn")
 
@@ -149,13 +160,10 @@ class Player(models.Model):
         self.position = self.position % 40
         self.save()
 
-    def buy_space(self, space: Space):
+    @player_turn_required
+    def buy_space(self, game: Game, space: Space):
         if self.money < space.price:
             raise GameException("You don't have enough money to buy this space")
-
-        game = self.get_current_game()
-        if game.current_player != self:
-            raise GameException("It's not your turn")
 
         if game.players.filter(ownedSpace__space=space).first():
             raise GameException("This space is already owned")

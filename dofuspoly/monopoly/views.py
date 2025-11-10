@@ -6,6 +6,7 @@ from django.shortcuts import get_object_or_404
 
 
 from .exceptions import GameException
+from .decorators import is_player_in_game
 from .realtimes import update_game
 from .models import Board, Game, Player
 from .serializers import (
@@ -34,15 +35,8 @@ class GameViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     @action(detail=True, methods=["get"])
-    def roll_dice(self, request, pk=None):
-        game: Game = self.get_object()
-        player = get_object_or_404(Player, user=request.user)
-
-        if game.current_player != player:
-            return Response(
-                {"status": "error", "message": "It's not your turn!"}, status=403
-            )
-
+    @is_player_in_game
+    def roll_dice(self, request, game: Game = None, player: Player = None, pk=None):
         try:
             game.roll_dice()
         except GameException as e:
@@ -62,28 +56,25 @@ class GameViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(game)
         return Response(serializer.data)
 
-    @action(detail=True, methods=["get"], permission_classes=[IsAuthenticated])
-    def end_turn(self, request, pk=None):
-        game: Game = self.get_object()
-        player = get_object_or_404(Player, user=request.user)
-
-        if game.current_player != player:
-            return Response(
-                {"status": "error", "message": "It's not your turn!"}, status=403
-            )
-
-        if not player.has_rolled:
-            return Response(
-                {
-                    "status": "error",
-                    "message": "You must roll the dice before ending your turn!",
-                },
-                status=403,
-            )
-
-        game.end_turn()
+    @action(detail=True, methods=["get"])
+    @is_player_in_game
+    def end_turn(self, request, pk=None, game: Game = None, player: Player = None):
+        player.end_turn(game)
         update_game(game)
         return Response({"status": "turn ended"})
+
+    @action(detail=True, methods=["post"])
+    @is_player_in_game
+    def buy_space(self, request, pk=None, game: Game = None, player: Player = None):
+        space = game.board.spaces.get(position=player.position)
+
+        try:
+            player.buy_space(game, space)
+        except GameException as e:
+            return Response({"status": "error", "message": str(e)}, status=403)
+
+        update_game(game)
+        return Response({"status": "space bought"})
 
 
 class PlayerViewSet(viewsets.ModelViewSet):

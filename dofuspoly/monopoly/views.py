@@ -63,7 +63,7 @@ class GameViewSet(viewsets.ModelViewSet):
         update_game(game)
         return Response({"status": "turn ended"})
 
-    @action(detail=True, methods=["post"])
+    @action(detail=True, methods=["get"])
     @is_player_in_game
     def buy_space(self, request, pk=None, game: Game = None, player: Player = None):
         space = game.board.spaces.get(position=player.position)

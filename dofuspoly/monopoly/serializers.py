@@ -68,10 +68,11 @@ class PlayerSerializer(serializers.ModelSerializer):
 class SpaceSerializer(serializers.ModelSerializer):
     color = ColorSerializer()
     type = SpaceTypeSerializer()
+    can_be_bought = serializers.SerializerMethodField()
 
     class Meta:
         model = Space
-        fields = ["name", "price", "type", "color", "position"]
+        fields = ["name", "price", "type", "color", "position", "can_be_bought"]
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
@@ -79,6 +80,11 @@ class SpaceSerializer(serializers.ModelSerializer):
         if representation["color"]:
             representation["color"] = representation["color"]["name"]
         return representation
+
+    def get_can_be_bought(self, obj):
+        if obj.is_property():
+            return True
+        return False
 
 
 class BoardSerializer(serializers.ModelSerializer):

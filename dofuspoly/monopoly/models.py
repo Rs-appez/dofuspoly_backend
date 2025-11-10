@@ -79,6 +79,9 @@ class Space(models.Model):
     def __str__(self):
         return self.name
 
+    def is_property(self) -> bool:
+        return self.type.is_property()
+
 
 class Rent(models.Model):
     price_house = models.IntegerField()
@@ -96,6 +99,9 @@ class SpaceType(models.Model):
 
     def __str__(self):
         return self.type
+
+    def is_property(self) -> bool:
+        return self.type in ["Street", "Railroad", "Utility"]
 
 
 class Card(models.Model):

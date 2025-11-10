@@ -1,5 +1,16 @@
 from rest_framework import serializers
-from .models import Board, Color, Space, Game, Rent, SpaceType, Card, CardType, Player, OwnedSpace
+from .models import (
+    Board,
+    Color,
+    Space,
+    Game,
+    Rent,
+    SpaceType,
+    Card,
+    CardType,
+    Player,
+    OwnedSpace,
+)
 from django.contrib.auth.models import User
 
 
@@ -82,8 +93,7 @@ class SpaceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Space
-        fields = ["name", "price", "type",
-                  "color", "position", "can_be_bought"]
+        fields = ["name", "price", "type", "color", "position", "can_be_bought"]
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
@@ -114,3 +124,8 @@ class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
         fields = "__all__"
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation["current_player"] = representation["current_player"]["username"]
+        return representation

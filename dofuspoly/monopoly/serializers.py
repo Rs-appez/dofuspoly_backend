@@ -63,7 +63,7 @@ class OwnedSpaceSerializer(serializers.ModelSerializer):
 class PlayerSerializer(serializers.ModelSerializer):
     cards = CardSerializer(many=True)
     username = UserSerializer(source="user")
-    owned_space = OwnedSpaceSerializer(many=True)
+    owned_spaces = OwnedSpaceSerializer(many=True)
 
     class Meta:
         model = Player
@@ -75,7 +75,7 @@ class PlayerSerializer(serializers.ModelSerializer):
             "in_jail",
             "jail_turns",
             "cards",
-            "owned_space",
+            "owned_spaces",
             "image",
         ]
 

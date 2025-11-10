@@ -132,7 +132,7 @@ class Player(models.Model):
     in_jail = models.BooleanField(default=False)
     jail_turns = models.IntegerField(default=0)
     cards = models.ManyToManyField("Card", blank=True)
-    ownedSpace = models.ManyToManyField("OwnedSpace", blank=True)
+    owned_space = models.ManyToManyField("OwnedSpace", blank=True)
     image = models.CharField(max_length=255, default="default.png")
 
     def __str__(self):
@@ -175,24 +175,24 @@ class Player(models.Model):
             raise GameException("You don't have enough money to buy this space")
 
         owned_space = OwnedSpace.objects.create(space=space)
-        self.ownedSpace.add(owned_space)
+        self.owned_space.add(owned_space)
         self.money -= space.price
         self.save()
 
 
 class OwnedSpace(models.Model):
     space = models.ForeignKey("Space", on_delete=models.CASCADE)
-    mortgaged = models.BooleanField(default=False)
+    is_mortgaged = models.BooleanField(default=False)
     houses = models.IntegerField(default=0)
-    hotel = models.BooleanField(default=False)
+    has_hotel = models.BooleanField(default=False)
 
     def calculate_rent(self) -> int:
-        if self.mortgaged:
+        if self.is_mortgaged:
             return 0
 
         rent = self.space.rent.rent
 
-        if self.hotel:
+        if self.has_hotel:
             rent = self.space.rent.rent_hotel
         else:
             if self.houses == 1:

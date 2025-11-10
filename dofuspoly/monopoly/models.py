@@ -132,6 +132,9 @@ class Player(models.Model):
     def __str__(self):
         return self.user.username
 
+    def get_current_game(self):
+        return Game.objects.filter(players=self, finished=False).first()
+
     def can_player_roll(self) -> bool:
         if self.has_rolled:
             raise GameException("You have already rolled this turn")
@@ -145,9 +148,6 @@ class Player(models.Model):
         self.position += sum(dice_values)
         self.position = self.position % 40
         self.save()
-
-    def get_current_game(self):
-        return Game.objects.filter(players=self, finished=False).first()
 
 
 class OwnedSpace(models.Model):

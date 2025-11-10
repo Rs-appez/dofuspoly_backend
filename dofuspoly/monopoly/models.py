@@ -149,6 +149,25 @@ class Player(models.Model):
         self.position = self.position % 40
         self.save()
 
+    def buy_space(self, space: Space):
+        if self.money < space.price:
+            raise GameException("You don't have enough money to buy this space")
+
+        if self.position != space.position:
+            raise GameException("You are not on this space")
+
+        game = self.get_current_game()
+        if game.current_player != self:
+            raise GameException("It's not your turn")
+
+        if game.players.filter(ownedSpace__space=space).first():
+            raise GameException("This space is already owned")
+
+        owned_space = OwnedSpace.objects.create(space=space)
+        self.ownedSpace.add(owned_space)
+        self.money -= space.price
+        self.save()
+
 
 class OwnedSpace(models.Model):
     space = models.ForeignKey("Space", on_delete=models.CASCADE)

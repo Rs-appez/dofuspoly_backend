@@ -64,14 +64,11 @@ class Player(models.Model):
     @player_turn_required
     def trigger_space_effect(self, game: Game):
         space = game.board.spaces.get(position=self.position)
-        if owned_space := game.board.players.owned_spaces.filter(
-            space__position=self.position
+        if owner := game.players.filter(
+            owned_spaces__space__position=self.position
         ).first():
-            rent = owned_space.calculate_rent()
+            rent = owner.owned_spaces.get(space__position=self.position).calculate_rent()
             self.update_money(-rent)
-            owner = game.players.filter(
-                owned_spaces__space__position=self.position
-            ).first()
             owner.update_money(rent)
             owner.save()
 

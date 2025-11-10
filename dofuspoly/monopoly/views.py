@@ -62,10 +62,10 @@ class GameViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(game)
         return Response(serializer.data)
 
-    @action(detail=False, methods=["get"], permission_classes=[IsAuthenticated])
-    def end_turn(self, request):
+    @action(detail=True, methods=["get"], permission_classes=[IsAuthenticated])
+    def end_turn(self, request, pk=None):
+        game: Game = self.get_object()
         player = get_object_or_404(Player, user=request.user)
-        game = Game.objects.filter(players=player, finished=False).first()
 
         if game.current_player != player:
             return Response(

@@ -162,11 +162,11 @@ class Player(models.Model):
 
     @player_turn_required
     def buy_space(self, game: Game, space: Space):
-        if self.money < space.price:
-            raise GameException("You don't have enough money to buy this space")
-
         if game.players.filter(ownedSpace__space=space).first():
             raise GameException("This space is already owned")
+
+        if self.money < space.price:
+            raise GameException("You don't have enough money to buy this space")
 
         owned_space = OwnedSpace.objects.create(space=space)
         self.ownedSpace.add(owned_space)

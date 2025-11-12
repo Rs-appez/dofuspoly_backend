@@ -72,6 +72,7 @@ class PlayerSerializer(serializers.ModelSerializer):
             "money",
             "position",
             "has_rolled",
+            "nb_double_rolls",
             "in_jail",
             "jail_turns",
             "cards",

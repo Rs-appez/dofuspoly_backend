@@ -36,6 +36,7 @@ class Player(models.Model):
 
     def start_turn(self):
         self.has_rolled = False
+        self.nb_double_rolls = 0
         self.save()
 
     @player_turn_required
@@ -44,9 +45,6 @@ class Player(models.Model):
             raise GameException("You must roll before ending your turn")
         if self.money < 0:
             raise GameException("You are bankrupt and cannot end your turn")
-
-        self.nb_double_rolls = 0
-        self.save()
 
         self.game.end_turn()
 

@@ -26,16 +26,17 @@ class Player(models.Model):
     def get_current_game(self):
         return Game.objects.filter(players=self, finished=False).first()
 
-    def allow_roll(self):
-        self.has_rolled = False
-        self.save()
-
     def update_money(self, amount: int):
         self.money += amount
         self.save()
 
         if self.money < 0:
             raise GameException("Player is bankrupt")
+
+
+    def start_turn(self):
+        self.has_rolled = False
+        self.save()
 
     @player_turn_required
     def end_turn(self, game: Game):

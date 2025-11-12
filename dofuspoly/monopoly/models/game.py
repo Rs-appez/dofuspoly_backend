@@ -55,6 +55,6 @@ class Game(models.Model):
         current_index = players.index(self.current_player)
         next_index = (current_index + 1) % len(players)
         self.current_player = players[next_index]
-        self.current_player.allow_roll()
+        self.current_player.start_turn()
         self.turn += 1
         self.save()

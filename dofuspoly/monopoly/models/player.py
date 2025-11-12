@@ -153,7 +153,6 @@ class Player(models.Model):
         if not self.has_rolled and self.nb_double_rolls == 0:
             raise GameException("You must roll before buying a space")
 
-        owned_space = OwnedSpace.objects.create(space=space)
-        self.owned_spaces.add(owned_space)
+        OwnedSpace.objects.create(space=space, player=self)
         self.update_money(-space.price)
         self.save()

@@ -3,6 +3,19 @@ from .exceptions import GameException
 from functools import wraps
 
 
+def update_game_state(func):
+    @wraps(func)
+    def wrapper(self, request, game, *args, **kwargs):
+        from .realtimes import update_game
+
+        result = func(self, request, game=game, *args, **kwargs)
+        if game:
+            update_game(game)
+        return result
+
+    return wrapper
+
+
 def player_turn_required(func):
     @wraps(func)
     def wrapper(self, game, *args, **kwargs):

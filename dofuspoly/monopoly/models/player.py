@@ -33,6 +33,10 @@ class Player(models.Model):
         if self.money < 0:
             raise GameException("Player is bankrupt")
 
+    def start_gain(self, game: Game = None):
+        if game is None:
+            game = self.get_current_game()
+        self.update_money(game.start_gain_amount)
 
     def start_turn(self):
         self.has_rolled = False
@@ -59,7 +63,9 @@ class Player(models.Model):
             return
 
         self.position += sum(dice_values)
-        self.position = self.position % 40
+        if self.position >= 40:
+            self.position = self.position % 40
+            self.start_gain()
         self.save()
 
     @player_turn_required
@@ -68,7 +74,9 @@ class Player(models.Model):
         if owner := game.players.filter(
             owned_spaces__space__position=self.position
         ).first():
-            rent = owner.owned_spaces.get(space__position=self.position).calculate_rent()
+            rent = owner.owned_spaces.get(
+                space__position=self.position
+            ).calculate_rent()
             self.update_money(-rent)
             owner.update_money(rent)
             owner.save()
@@ -86,8 +94,6 @@ class Player(models.Model):
             pass  # To be implemented
         elif space.type.type == "Free Parking":
             pass  # No effect
-        elif space.type.type == "Start":
-            self.update_money(200)
 
         self.save()
 

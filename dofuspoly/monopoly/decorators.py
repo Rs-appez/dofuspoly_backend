@@ -31,6 +31,6 @@ def is_player_in_game(func):
         if player not in game.players.all():
             raise GameException("You are not a player in this game")
 
-        return func(self, request, game=game, player=player, *args, **kwargs)
+        return func(self, request, game=game, *args, **kwargs)
 
     return wrapper

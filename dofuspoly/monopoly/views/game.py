@@ -19,14 +19,11 @@ class GameViewSet(viewsets.ModelViewSet):
 
     @action(detail=True, methods=["get"])
     @is_player_in_game
-    def roll_dice(self, request, game: Game = None, player: Player = None, pk=None):
+    def roll_dice(self, request, game: Game = None, pk=None):
         try:
-            print(player.position)
             game.roll_dice()
+            game.current_player.trigger_space_effect(game)
 
-            print(player.position)
-            player.trigger_space_effect(game)
-            print(player.position)
         except GameException as e:
             return Response({"status": "error", "message": str(e)}, status=403)
 

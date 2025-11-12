@@ -46,6 +46,8 @@ class Player(models.Model):
             raise GameException("You are bankrupt and cannot end your turn")
 
         self.nb_double_rolls = 0
+        self.save()
+
         self.game.end_turn()
 
     @player_turn_required
@@ -133,6 +135,7 @@ class Player(models.Model):
                 self.update_money(-space.tax_amount)
             case "Go to Jail":
                 self.__go_to_jail()
+                self.end_turn()
             case "Chance":
                 pass  # To be implemented
             case "Community Chest":

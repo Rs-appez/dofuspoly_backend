@@ -42,7 +42,6 @@ class Game(models.Model):
             raise GameException("No current player set")
 
         if self.current_player.can_player_roll():
-            self.current_player.has_rolled = True
             self.dice1Value = random.randint(1, 6)
             self.dice2Value = random.randint(1, 6)
 

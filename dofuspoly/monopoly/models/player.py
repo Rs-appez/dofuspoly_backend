@@ -13,6 +13,7 @@ class Player(models.Model):
     money = models.IntegerField()
     position = models.IntegerField()
     has_rolled = models.BooleanField(default=True)
+    nb_double_rolls = models.IntegerField(default=0)
     in_jail = models.BooleanField(default=False)
     jail_turns = models.IntegerField(default=0)
     cards = models.ManyToManyField("Card", blank=True)
@@ -44,6 +45,7 @@ class Player(models.Model):
         if self.money < 0:
             raise GameException("You are bankrupt and cannot end your turn")
 
+        self.nb_double_rolls = 0
         self.game.end_turn()
 
     @player_turn_required
@@ -54,9 +56,18 @@ class Player(models.Model):
         return True
 
     def move(self, dice_values: [int, int]):
+        self.has_rolled = True
         if self.in_jail:
             if self.__handle_jail_turn(dice_values):
                 return
+
+        if dice_values[0] == dice_values[1]:
+            self.nb_double_rolls += 1
+            if self.nb_double_rolls >= 3:
+                self.__go_to_jail()
+                return
+            else:
+                self.has_rolled = False
 
         self.position += sum(dice_values)
         if self.position >= 40:

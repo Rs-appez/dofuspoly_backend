@@ -4,7 +4,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from ..exceptions import GameException
-from ..decorators import is_player_in_game
+from ..decorators import is_player_turn
 from ..realtimes import update_game
 from ..models import Game, Player
 from ..serializers import (
@@ -18,7 +18,7 @@ class GameViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     @action(detail=True, methods=["get"])
-    @is_player_in_game
+    @is_player_turn
     def roll_dice(self, request, game: Game = None, pk=None):
         try:
             game.roll_dice()
@@ -42,15 +42,17 @@ class GameViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     @action(detail=True, methods=["get"])
-    @is_player_in_game
-    def end_turn(self, request, pk=None, game: Game = None, player: Player = None):
+    @is_player_turn
+    def end_turn(self, request, pk=None, game: Game = None):
+        player = game.current_player
         player.end_turn(game)
         update_game(game)
         return Response({"status": "turn ended"})
 
     @action(detail=True, methods=["get"])
-    @is_player_in_game
-    def buy_space(self, request, pk=None, game: Game = None, player: Player = None):
+    @is_player_turn
+    def buy_space(self, request, pk=None, game: Game = None):
+        player = game.current_player
         space = game.board.spaces.get(position=player.position)
 
         try:

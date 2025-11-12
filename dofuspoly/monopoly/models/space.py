@@ -28,6 +28,9 @@ class SpaceType(models.Model):
 
 class OwnedSpace(models.Model):
     space = models.ForeignKey("Space", on_delete=models.CASCADE)
+    player = models.ForeignKey(
+        "Player", on_delete=models.CASCADE, related_name="owned_spaces"
+    )
     is_mortgaged = models.BooleanField(default=False)
     houses = models.IntegerField(default=0)
     has_hotel = models.BooleanField(default=False)
@@ -49,6 +52,8 @@ class OwnedSpace(models.Model):
                 rent = self.space.rent.rent_3_houses
             elif self.houses == 4:
                 rent = self.space.rent.rent_4_houses
+
+        # if self.space.type.type == ""
 
         return rent
 

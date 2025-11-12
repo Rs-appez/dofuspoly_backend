@@ -17,7 +17,6 @@ class Player(models.Model):
     in_jail = models.BooleanField(default=False)
     jail_turns = models.IntegerField(default=0)
     cards = models.ManyToManyField("Card", blank=True)
-    owned_spaces = models.ManyToManyField("OwnedSpace", blank=True)
     image = models.CharField(max_length=255, default="default.png")
     game = models.ForeignKey("Game", on_delete=models.CASCADE, related_name="players")
 

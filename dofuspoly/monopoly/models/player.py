@@ -74,7 +74,7 @@ class Player(models.Model):
         else:
             self.jail_turns += 1
             if self.jail_turns >= 3:
-                self.update_money(-50)  # Pay fine to leave jail
+                self.pay_jail_fee()
                 self.__leave_jail()
                 return False
         return True
@@ -83,6 +83,16 @@ class Player(models.Model):
         self.in_jail = False
         self.jail_turns = 0
         self.save()
+
+    @player_turn_required
+    def pay_jail_fee(self):
+        if not self.in_jail:
+            raise GameException("You are not in jail")
+
+        if self.money < self.game.jail_fee_amount:
+            raise GameException("You don't have enough money to pay the jail fee")
+
+        self.update_money(-self.game.jail_fee_amount)
 
     def __go_to_jail(self):
         jail_space = self.game.board.spaces.get(type__type="Jail")

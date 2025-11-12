@@ -103,9 +103,13 @@ class Player(models.Model):
     @player_turn_required
     def trigger_space_effect(self):
         space = self.game.board.spaces.get(position=self.position)
-        if owner := self.game.players.filter(
-            owned_spaces__space__position=self.position
-        ).first():
+        if (
+            owner := self.game.players.filter(
+                owned_spaces__space__position=self.position,
+            )
+            .exclude(id=self.id)
+            .first()
+        ):
             rent = owner.owned_spaces.get(
                 space__position=self.position
             ).calculate_rent()

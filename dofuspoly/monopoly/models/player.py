@@ -117,16 +117,17 @@ class Player(models.Model):
             owner.update_money(rent)
             owner.save()
 
-        elif space.type.type == "Tax":
-            self.update_money(-space.tax_amount)
-        elif space.type.type == "Go to Jail":
-            self.__go_to_jail()
-        elif space.type.type == "Chance":
-            pass  # To be implemented
-        elif space.type.type == "Community Chest":
-            pass  # To be implemented
-        elif space.type.type == "Free Parking":
-            pass  # No effect
+        match space.type.type:
+            case "Tax":
+                self.update_money(-space.tax_amount)
+            case "Go to Jail":
+                self.__go_to_jail()
+            case "Chance":
+                pass  # To be implemented
+            case "Community Chest":
+                pass  # To be implemented
+            case "Free Parking":
+                pass  # No effect
 
         self.save()
 

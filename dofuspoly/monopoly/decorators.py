@@ -18,14 +18,14 @@ def update_game_state(func):
 
 def player_turn_required(func):
     @wraps(func)
-    def wrapper(self, game, *args, **kwargs):
+    def wrapper(self, *args, **kwargs):
         from .models import Player
 
         if not isinstance(self, Player):
             raise Exception("Decorator can only be used on player instance methods")
-        if game.current_player != self:
+        if self.game.current_player != self:
             raise GameException("It's not your turn")
-        return func(self, game, *args, **kwargs)
+        return func(self, *args, **kwargs)
 
     return wrapper
 

@@ -19,7 +19,6 @@ class Board(models.Model):
 class Game(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     board = models.ForeignKey("Board", on_delete=models.CASCADE)
-    players = models.ManyToManyField("Player")
     current_player = models.ForeignKey(
         "Player",
         null=True,
@@ -41,7 +40,7 @@ class Game(models.Model):
         if not self.current_player:
             raise GameException("No current player set")
 
-        if self.current_player.can_player_roll(self):
+        if self.current_player.can_player_roll():
             self.current_player.has_rolled = True
             self.dice1Value = random.randint(1, 6)
             self.dice2Value = random.randint(1, 6)

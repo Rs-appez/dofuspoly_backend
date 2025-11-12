@@ -22,7 +22,7 @@ class GameViewSet(viewsets.ModelViewSet):
     def roll_dice(self, request, game: Game = None, pk=None):
         try:
             game.roll_dice()
-            game.current_player.trigger_space_effect(game)
+            game.current_player.trigger_space_effect()
 
         except GameException as e:
             return Response({"status": "error", "message": str(e)}, status=403)
@@ -36,7 +36,7 @@ class GameViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=["get"])
     def current_game(self, request):
         player = get_object_or_404(Player, user=request.user)
-        game = player.get_current_game()
+        game = player.game
         serializer = self.get_serializer(game)
         return Response(serializer.data)
 
@@ -46,7 +46,7 @@ class GameViewSet(viewsets.ModelViewSet):
     def end_turn(self, request, pk=None, game: Game = None):
         player = game.current_player
         try:
-            player.end_turn(game)
+            player.end_turn()
         except GameException as e:
             return Response({"status": "error", "message": str(e)}, status=403)
         return Response({"status": "turn ended"})
@@ -59,7 +59,7 @@ class GameViewSet(viewsets.ModelViewSet):
         space = game.board.spaces.get(position=player.position)
 
         try:
-            player.buy_space(game, space)
+            player.buy_space(space)
         except GameException as e:
             return Response({"status": "error", "message": str(e)}, status=403)
 

@@ -4,7 +4,6 @@ from django.db import models
 
 from ..decorators import player_turn_required
 from ..exceptions import GameException
-from .game import Game
 from .space import Space, OwnedSpace
 
 
@@ -19,12 +18,10 @@ class Player(models.Model):
     cards = models.ManyToManyField("Card", blank=True)
     owned_spaces = models.ManyToManyField("OwnedSpace", blank=True)
     image = models.CharField(max_length=255, default="default.png")
+    game = models.ForeignKey("Game", on_delete=models.CASCADE, related_name="players")
 
     def __str__(self):
         return self.user.username
-
-    def get_current_game(self):
-        return Game.objects.filter(players=self, finished=False).first()
 
     def update_money(self, amount: int):
         self.money += amount
@@ -33,34 +30,33 @@ class Player(models.Model):
         if self.money < 0:
             raise GameException("Player is bankrupt")
 
-    def start_gain(self, game: Game = None):
-        if game is None:
-            game = self.get_current_game()
-        self.update_money(game.start_gain_amount)
+    def start_gain(self):
+        self.update_money(self.game.start_gain_amount)
 
     def start_turn(self):
         self.has_rolled = False
         self.save()
 
     @player_turn_required
-    def end_turn(self, game: Game):
+    def end_turn(self):
         if not self.has_rolled:
             raise GameException("You must roll before ending your turn")
         if self.money < 0:
             raise GameException("You are bankrupt and cannot end your turn")
 
-        game.end_turn()
+        self.game.end_turn()
 
     @player_turn_required
-    def can_player_roll(self, game: Game) -> bool:
+    def can_player_roll(self) -> bool:
         if self.has_rolled:
             raise GameException("You have already rolled this turn")
 
         return True
 
     def move(self, dice_values: [int, int]):
-        if self.in_jail and dice_values[0] != dice_values[1]:
-            return
+        if self.in_jail:
+            if self.__handle_jail_turn(dice_values):
+                return
 
         self.position += sum(dice_values)
         if self.position >= 40:
@@ -68,10 +64,36 @@ class Player(models.Model):
             self.start_gain()
         self.save()
 
+    def __handle_jail_turn(self, dice_values: [int, int]):
+        """Handles the player's turn when they are in jail.
+        Returns True if the player remains in jail, False otherwise.
+        """
+        if dice_values[0] == dice_values[1]:
+            self.__leave_jail()
+            return False
+        else:
+            self.jail_turns += 1
+            if self.jail_turns >= 3:
+                self.update_money(-50)  # Pay fine to leave jail
+                self.__leave_jail()
+                return False
+        return True
+
+    def __leave_jail(self):
+        self.in_jail = False
+        self.jail_turns = 0
+        self.save()
+
+    def __go_to_jail(self):
+        jail_space = self.game.board.spaces.get(type__type="Jail")
+        self.position = jail_space.position
+        self.in_jail = True
+        self.save()
+
     @player_turn_required
-    def trigger_space_effect(self, game: Game):
-        space = game.board.spaces.get(position=self.position)
-        if owner := game.players.filter(
+    def trigger_space_effect(self):
+        space = self.game.board.spaces.get(position=self.position)
+        if owner := self.game.players.filter(
             owned_spaces__space__position=self.position
         ).first():
             rent = owner.owned_spaces.get(
@@ -84,10 +106,7 @@ class Player(models.Model):
         elif space.type.type == "Tax":
             self.money -= space.price
         elif space.type.type == "Go to Jail":
-            jail_space = game.board.spaces.get(type__type="Jail")
-            self.position = jail_space.position
-            self.in_jail = True
-            self.jail_turns = 0
+            self.__go_to_jail()
         elif space.type.type == "Chance":
             pass  # To be implemented
         elif space.type.type == "Community Chest":
@@ -98,8 +117,8 @@ class Player(models.Model):
         self.save()
 
     @player_turn_required
-    def buy_space(self, game: Game, space: Space):
-        if game.players.filter(owned_spaces__space=space).first():
+    def buy_space(self, space: Space):
+        if self.game.players.filter(owned_spaces__space=space).first():
             raise GameException("This space is already owned")
 
         if self.money < space.price:

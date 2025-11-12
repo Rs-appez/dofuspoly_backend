@@ -118,7 +118,7 @@ class Player(models.Model):
             owner.save()
 
         elif space.type.type == "Tax":
-            self.money -= space.price
+            self.update_money(-space.tax_amount)
         elif space.type.type == "Go to Jail":
             self.__go_to_jail()
         elif space.type.type == "Chance":

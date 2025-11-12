@@ -28,6 +28,7 @@ class Game(models.Model):
         related_name="current_player",
     )
     turn = models.IntegerField(default=0)
+    start_gain_amount = models.IntegerField(default=200)
     dice1Value = models.IntegerField(default=6)
     dice2Value = models.IntegerField(default=6)
     finished = models.BooleanField(default=False)

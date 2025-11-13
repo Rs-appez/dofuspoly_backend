@@ -10,6 +10,7 @@ def update_game_state(func):
 
         result = func(self, request, game=game, *args, **kwargs)
         if game:
+            game.refresh_from_db()
             update_game(game)
         return result
 

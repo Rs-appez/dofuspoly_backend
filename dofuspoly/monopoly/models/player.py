@@ -30,7 +30,7 @@ class Player(models.Model):
         if self.money < 0:
             raise GameException("Player is bankrupt")
 
-    def start_gain(self):
+    def gain_start_amount(self):
         self.update_money(self.game.start_gain_amount)
 
     def start_turn(self):
@@ -71,7 +71,7 @@ class Player(models.Model):
         self.position += sum(dice_values)
         if self.position >= 40:
             self.position = self.position % 40
-            self.start_gain()
+            self.gain_start_amount()
         self.save()
 
     def __handle_jail_turn(self, dice_values: [int, int]):

@@ -1,3 +1,4 @@
+import time
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import action
@@ -5,6 +6,7 @@ from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from ..exceptions import GameException
 from ..decorators import is_player_turn, update_game_state
+from ..realtimes import update_game
 from ..models import Game, Player
 from ..serializers import (
     GameSerializer,
@@ -21,6 +23,9 @@ class GameViewSet(viewsets.ModelViewSet):
     @update_game_state
     def roll_dice(self, request, game: Game = None, pk=None):
         try:
+            game.reset_dice()
+            update_game(game)
+            time.sleep(3)
             game.roll_dice()
             game.current_player.trigger_space_effect()
 

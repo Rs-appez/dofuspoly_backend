@@ -37,6 +37,11 @@ class Game(models.Model):
     def __str__(self):
         return str(self.id)
 
+    def reset_dice(self):
+        self.dice1Value = 0
+        self.dice2Value = 0
+        self.save()
+
     def roll_dice(self):
         if not self.current_player:
             raise GameException("No current player set")

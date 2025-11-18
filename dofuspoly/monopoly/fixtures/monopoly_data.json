@@ -97,7 +97,7 @@
     "fields": {
       "name": "Taxe d'abonement",
       "position": 4,
-      "price": 0,
+      "price": 200,
       "type": 6,
       "color": null,
       "rent": null
@@ -515,9 +515,9 @@
     "model": "monopoly.space",
     "pk": 39,
     "fields": {
-      "name": "taxe alister",
+      "name": "Taxe alister",
       "position": 38,
-      "price": 0,
+      "price": 100,
       "type": 6,
       "color": null,
       "rent": null

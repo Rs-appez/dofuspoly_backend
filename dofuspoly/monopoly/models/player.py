@@ -60,7 +60,7 @@ class Player(models.Model):
             if self.__handle_jail_turn(dice_values):
                 return
 
-        if dice_values[0] == dice_values[1]:
+        elif dice_values[0] == dice_values[1]:
             self.nb_double_rolls += 1
             if self.nb_double_rolls >= 3:
                 self.__go_to_jail()

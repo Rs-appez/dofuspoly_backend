@@ -25,7 +25,7 @@ class GameViewSet(viewsets.ModelViewSet):
         try:
             game.reset_dice()
             update_game(game)
-            time.sleep(3)
+            time.sleep(1)
             game.roll_dice()
             game.current_player.trigger_space_effect()
 

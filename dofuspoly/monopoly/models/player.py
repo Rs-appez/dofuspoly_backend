@@ -129,7 +129,7 @@ class Player(models.Model):
 
         match space.type.type:
             case "Tax":
-                self.update_money(-space.tax_amount)
+                self.update_money(-space.price)
             case "Go to Jail":
                 self.__go_to_jail()
                 self.end_turn()

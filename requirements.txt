@@ -14,7 +14,7 @@ djangorestframework==3.16.1
 djangorestframework_simplejwt==5.5.1
 hyperlink==21.0.0
 idna==3.11
-incremental==24.7.2
+incremental==24.11.0
 pillow==12.0.0
 pyasn1==0.6.1
 pyasn1_modules==0.4.2
@@ -24,7 +24,7 @@ pyOpenSSL==25.3.0
 python-decouple==3.8
 service-identity==24.2.0
 setuptools==80.9.0
-sqlparse==0.5.3
+sqlparse==0.5.4
 Twisted==25.5.0
 txaio==25.9.2
 typing_extensions==4.15.0

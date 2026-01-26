@@ -18,12 +18,12 @@ incremental==24.11.0
 pillow==12.1.0
 pyasn1==0.6.2
 pyasn1_modules==0.4.2
-pycparser==2.23
+pycparser==3.0
 PyJWT==2.10.1
 pyOpenSSL==25.3.0
 python-decouple==3.8
 service-identity==24.2.0
-setuptools==80.9.0
+setuptools==80.10.2
 sqlparse==0.5.5
 Twisted==25.5.0
 txaio==25.12.2

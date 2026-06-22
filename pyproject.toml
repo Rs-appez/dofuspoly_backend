@@ -7,7 +7,7 @@ requires-python = ">=3.14"
 dependencies = [
     "asgiref==3.11.1",
     "attrs==26.1.0",
-    "autobahn==25.12.2",
+    "autobahn==26.6.2",
     "automat==25.4.16",
     "cffi==2.0.0",
     "channels==4.3.2",
@@ -34,7 +34,7 @@ dependencies = [
     "setuptools==82.0.1",
     "sqlparse==0.5.5",
     "twisted==26.4.0",
-    "txaio==25.12.2",
+    "txaio==26.6.1",
     "typing-extensions==4.15.0",
     "zope-interface==8.5",
 ]

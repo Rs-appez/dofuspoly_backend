@@ -23,7 +23,7 @@ dependencies = [
     "hyperlink==21.0.0",
     "idna==3.18",
     "incremental==24.11.0",
-    "pillow==12.2.0",
+    "pillow==12.3.0",
     "pyasn1==0.6.3",
     "pyasn1-modules==0.4.2",
     "pycparser==3.0",
@@ -31,11 +31,11 @@ dependencies = [
     "pyopenssl==26.3.0",
     "python-decouple==3.8",
     "service-identity==26.1.0",
-    "setuptools==82.0.1",
+    "setuptools==83.0.0",
     "sqlparse==0.5.5",
     "twisted==26.4.0",
     "txaio==26.6.1",
-    "typing-extensions==4.15.0",
+    "typing-extensions==4.16.0",
     "zope-interface==8.5",
 ]
 

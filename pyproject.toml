@@ -21,7 +21,7 @@ dependencies = [
     "djangorestframework-simplejwt==5.5.1",
     "djangorestframework-stubs>=3.16.9",
     "hyperlink==21.0.0",
-    "idna==3.18",
+    "idna==3.19",
     "incremental==24.11.0",
     "pillow==12.3.0",
     "pyasn1==0.6.4",
@@ -36,7 +36,7 @@ dependencies = [
     "twisted==26.4.0",
     "txaio==26.6.1",
     "typing-extensions==4.16.0",
-    "zope-interface==8.5",
+    "zope-interface==8.6",
 ]
 
 [dependency-groups]
